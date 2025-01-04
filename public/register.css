@@ -1,0 +1,234 @@
+/* Reset some basic styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Style for the Memoir title */
+h1 {
+    color: #fff;
+    font-family: 'Pacifico', sans-serif;
+    font-size: 4em;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-bottom: 30px;
+}
+
+/* Ensure the body has enough padding/margin to show the title */
+body {
+    margin: 0;
+    padding: 20px; /* Space for the title at the top */
+    background: linear-gradient(135deg, #351fc4, #ffc021); /* Matches your theme */
+    font-family: 'Arial', sans-serif; /* Default font for the rest */
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* Add animation to the title */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Container for the entire form - Make the box a little smaller */
+.registerBox {
+    background: rgba(255, 255, 255, 0.9); /* Light transparent background */
+    padding: 25px 35px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 350px; /* Smaller size */
+    text-align: center;
+}
+
+/* Header for the register box */
+h2 {
+    margin-bottom: 20px;
+    font-size: 1.6em;
+    color: #333;
+}
+
+/* Form container styling */
+.form {
+    margin-bottom: 20px;
+}
+
+/* Label styling */
+label {
+    font-size: 1em;
+    color: #333;
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* Input fields */
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    background-color: #f9f9f9;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus {
+    border-color: #2a5298;
+    outline: none;
+}
+
+/* Button styling */
+button.register-btn {
+    background-color: #351fc4; /* Blue color */
+    color: white;
+    padding: 14px 20px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button.register-btn:hover {
+    background-color: #4127ea; /* Darker blue on hover */
+}
+
+/* Styling for the Login link */
+.login-link {
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.login-link a {
+    text-decoration: none;
+    color: #2a5298;
+    font-weight: bold;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .registerBox {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 2.5em;
+    }
+
+    h2 {
+        font-size: 1.4em;
+    }
+
+    button.register-btn {
+        font-size: 1em;
+    }
+}
+
+#dateofbirth {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    padding: 10px;
+    border: 2px solid ;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    color: #333;
+    width: 250px;
+    box-sizing: border-box;
+    /* Ensure padding doesn't affect width */
+}
+
+/* Modify the calendar icon */
+#dateofbirth::-webkit-calendar-picker-indicator {
+    background-color: #FFFFFF;
+    /* Change icon background */
+    border-radius: 5px;
+    padding: 5px;
+}
+
+/* Add focus styles */
+#dateofbirth:focus {
+    border-color: #2980b9;
+    outline: none;
+    background-color: #e3f2fd;
+}
+
+/* Placeholder text styling */
+#dateofbirth::placeholder {
+    color: #888;
+}
+
+#gender {
+    margin-top: 10px;
+}
+/* Remove default styling */
+.radio-group input[type="radio"] {
+    display: none;
+}
+
+/* Style for the custom radio buttons */
+.custom-radio {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #351fc4;
+    margin-right: 10px;
+    position: relative;
+    vertical-align: middle;
+    background-color: white;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Checked state for radio buttons */
+.radio-group input[type="radio"]:checked+.custom-radio {
+    background-color: #351fc4;
+    border-color: #351fc4;
+}
+
+/* Add the inner dot for checked radio buttons */
+.radio-group input[type="radio"]:checked+.custom-radio::after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: white;
+}
+
+/* Style the labels */
+.radio-group label {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* Hover effect */
+.radio-group label:hover .custom-radio {
+    border-color: #2980b9;
+}
