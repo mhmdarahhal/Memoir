@@ -24,10 +24,10 @@
     <div class="container">
         <nav class="nav">
             <ul>
-                <li><a href="#">Search</a></li>
-                <li><a href="#">Old Entries</a></li>
-                <li><a href="#">Starred Entries</a></li>
-                <li><a href="#">Settings</a></li>
+                <li type=button class="nav-item" id="search">Search</li>
+                <li type=button class="nav-item" id="oldentries">Old Entries</li>
+                <li type=button class="nav-item" id="starredentries">Starred Entries</li>
+                <li type=button class="nav-item" id="settings">Settings</li>
             </ul>
         </nav>
 
@@ -43,13 +43,9 @@
         </main>
     </div>
 
-    <script>
-        // JavaScript to toggle the navigation
-        function toggleNav() {
-            const nav = document.querySelector('.nav');
-            nav.classList.toggle('open');  // Toggle 'open' class to show/hide nav bar
-        }
-    </script>
+
+    <script src="home.js"></script>
+
 </body>
 
 </html>

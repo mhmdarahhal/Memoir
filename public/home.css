@@ -53,6 +53,8 @@ body {
     left: 20px;
 }
 
+
+
 /* Layout Container */
 .container {
     display: flex;
@@ -81,6 +83,7 @@ body {
 
 .nav ul {
     list-style: none;
+    margin-top: 80px;
     padding: 0;
 }
 
