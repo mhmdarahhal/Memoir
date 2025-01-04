@@ -42,7 +42,7 @@ h1 {
 }
 
 /* Container for the entire form - Make the box a little smaller */
-.loginBox,.registerBox {
+.loginBox{
     background: rgba(255, 255, 255, 0.9); /* Light transparent background */
     padding: 25px 35px;
     border-radius: 10px;
@@ -91,8 +91,7 @@ input[type="password"]:focus {
 }
 
 /* Button styling */
-
-button.login-btn,button.register-btn {
+button.login-btn {
     background-color: #2a5298; /* Blue color */
     color: white;
     padding: 14px 20px;
@@ -104,18 +103,18 @@ button.login-btn,button.register-btn {
     transition: background-color 0.3s ease;
 }
 
-button.login-btn:hover {
-    background-color: #1e3c72; /* Darker blue on hover */
+button.login-btn:hover{
+    background-color: #351fc4; /* Darker blue on hover */
 }
 
 /* Styling for the Register link */
-.register-link,.login-link {
+.register-link {
     margin-top: 20px;
     font-size: 0.9em;
     color: #555;
 }
 
-.register-link a,.login-link a {
+.register-link a {
     text-decoration: none;
     color: #2a5298;
     font-weight: bold;
