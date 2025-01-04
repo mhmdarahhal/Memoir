@@ -14,10 +14,12 @@
     <header class="header">
         <div class="logo">Memoir</div>
         <button class="menu-btn" onclick="toggleNav()">☰</button> <!-- Menu button -->
-        <div class="user-welcome">
-            <span>Welcome, jezzeke</span>
-        </div>
+
     </header>
+
+    <div class="user-welcome">
+        <span>Welcome, jezzeke</span>
+    </div>
 
     <div class="container">
         <nav class="nav">

@@ -6,6 +6,9 @@ body {
     background: linear-gradient(180deg, #ffc021d2, #ffffff); /* Yellow to white gradient */
     color: #333;
     line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Full viewport height */
 }
 
 /* Header Section */
@@ -16,6 +19,7 @@ body {
     font-family: 'Pacifico', cursive;
     position: relative;
     z-index: 1;
+    height: 70px; /* Set header height */
 }
 
 .logo {
@@ -24,7 +28,7 @@ body {
     letter-spacing: 2px;
     margin-bottom: 5px;
     font-family: 'Pacifico', sans-serif;
-    color: #351fc4
+    color: #351fc4;
 }
 
 .user-welcome {
@@ -34,7 +38,7 @@ body {
     font-size: 18px;
     font-weight: 400;
     font-family: 'Pacifico', sans-serif;
-    color: #351fc4
+    color: #351fc4;
 }
 
 /* Menu Button */
@@ -52,13 +56,15 @@ body {
 /* Layout Container */
 .container {
     display: flex;
-    min-height: 100vh;
+    flex-grow: 1; /* Allow the container to take the remaining height */
+    flex-direction: row;
+    overflow: hidden; /* Prevent scrolling */
 }
 
 /* Navigation Styling */
 .nav {
     width: 250px;
-    background: linear-gradient(135deg, #351fc4, white); /* Yellow to white gradient */
+    background: linear-gradient(135deg, #351fc4, white); /* Gradient background */
     color: white;
     padding: 20px;
     height: 100%;
@@ -97,10 +103,12 @@ body {
 /* Main Content Area */
 .main-content {
     margin-left: 270px; /* Leave space for the navigation */
-    flex-grow: 1;
-    padding: 40px 20px;
+    padding: 20px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    flex-grow: 1; /* Take remaining space */
+    justify-content: flex-start;
+    overflow-y: auto; /* Allow scrolling in main content if needed */
 }
 
 /* Journal Entry Section */
@@ -111,7 +119,13 @@ body {
     padding: 25px;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 20px;
     overflow: hidden;
+    flex-grow: 1; /* Allow journal box to grow */
+    min-height: 0; /* Allow it to fit inside available space */
 }
 
 /* Title of Entry */
@@ -155,7 +169,7 @@ body {
 /* Entry Textarea Styling */
 .entry-body {
     width: 100%;
-    height: 200px;
+    height: 100%; /* Ensure it takes up the remaining space */
     margin-top: 20px;
     padding: 12px;
     font-size: 16px;
@@ -163,6 +177,7 @@ body {
     border: 1px solid #ccc;
     font-family: 'Arial', sans-serif;
     transition: border-color 0.3s ease;
+    resize: none; /* Disable resizing the textarea */
 }
 
 .entry-body:focus {
@@ -181,7 +196,7 @@ body {
         width: 100%;
         position: static;
         box-shadow: none;
-        left: 0; /* Ensure it's always visible in small screens */
+        left: 0; /* Ensure it's always visible on small screens */
     }
 
     .main-content {
@@ -190,5 +205,10 @@ body {
 
     .entry-title {
         font-size: 24px;
+    }
+
+    .journal-entry {
+        width: 100%;
+        height: auto; /* Allow auto height on small screens */
     }
 }
