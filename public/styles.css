@@ -19,7 +19,7 @@ body {
 /* Title of the page - center at the top with an attractive font */
 h1 {
     color: #fff;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Pacifico', sans-serif;
     font-size: 4em;
     font-weight: 700;
     text-align: center;
@@ -92,7 +92,7 @@ input[type="password"]:focus {
 
 /* Button styling */
 button.login-btn {
-    background-color: #2a5298; /* Blue color */
+    background-color: #351fc4; /* Blue color */
     color: white;
     padding: 14px 20px;
     width: 100%;
