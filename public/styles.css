@@ -143,3 +143,95 @@ button.login-btn:hover {
         font-size: 1em;
     }
 }
+
+/* Header for the dashboard */
+.dashboard-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: rgba(53, 31, 196, 0.9); /* Match gradient style */
+    color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.dashboard-header h1 {
+    font-size: 1.8em;
+    font-family: 'Pacifico', sans-serif;
+}
+
+.logout-btn {
+    background-color: #ff4b5c;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 10px 15px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+    background-color: #d7374e;
+}
+
+/* Main dashboard styling */
+.dashboard {
+    padding: 40px;
+    text-align: center;
+}
+
+.new-entry, .old-entries {
+    margin-bottom: 30px;
+}
+
+.new-entry h2, .old-entries h2 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.create-btn {
+    background-color: #2a5298;
+    color: white;
+    padding: 15px 25px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.create-btn:hover {
+    background-color: #1e3c72;
+}
+
+/* Styling for old entries list */
+.entries-list {
+    list-style: none;
+    padding: 0;
+}
+
+.entries-list li {
+    margin: 10px 0;
+    font-size: 1.1em;
+}
+
+.entries-list a {
+    text-decoration: none;
+    color: #2a5298;
+    font-weight: bold;
+}
+
+.entries-list a:hover {
+    text-decoration: underline;
+}
+
+/* Footer styling */
+.dashboard-footer {
+    padding: 20px;
+    background: #351fc4;
+    color: white;
+    text-align: center;
+}
