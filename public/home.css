@@ -37,7 +37,7 @@ body {
     font-family: 'Pacifico', sans-serif;
     color: #351fc4;
     text-align: center;
-    margin-top: 10px;
+    margin-top: 10px; /* Increased margin-top for more space above */
 }
 
 /* Menu Button */
@@ -102,7 +102,8 @@ body {
     margin: 10px 0; /* Add spacing between items */
     padding: 10px 0; /* Add padding inside the item */
     text-align: left; /* Align text to the left */
-    font-size: 16px;
+    font-size: 20px;
+    font-weight: 600;
     color: #140285; /* Text color */
     text-decoration: none; /* Remove underline */
     cursor: pointer; /* Add pointer cursor */
@@ -133,16 +134,17 @@ body {
     width: 100%;
     max-width: 700px;
     background-color: white;
-    padding: 20px 25px 25px 25px; /* Increased padding-top to push content down */
+    padding: 10px 25px 25px 25px; /* Increased padding-top for more space inside */
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
+    margin-top: 30px; /* Increased margin-top to push journal entry down */
     overflow: hidden;
     flex-grow: 1; /* Allow journal box to grow */
-    min-height: 300px; /* Increased height */
+    min-height: 0; /* Allow it to fit inside available space */
 }
 
 /* Title of Entry */
@@ -184,24 +186,31 @@ body {
 }
 
 /* Entry Textarea Styling */
+/* Entry Textarea Styling */
+/* Entry Textarea Styling */
 .entry-body {
     width: 100%;
-    height: 100%; /* Ensure it takes up the remaining space */
+    height: 250px; /* Increase the height for better visibility */
     margin-top: 20px;
-    margin-right: 20px;
-    padding: 40px; /* Add more padding for better spacing */
+    padding: 20px; /* Adjust padding for better space */
     font-size: 16px;
     border-radius: 8px;
     border: 1px solid #ccc;
     font-family: 'Arial', sans-serif;
     transition: border-color 0.3s ease;
     resize: none; /* Disable resizing the textarea */
+    box-sizing: border-box; /* Ensure padding doesn't overflow the border */
+    overflow: auto; /* Allow for scrolling inside textarea if content overflows */
 }
 
+/* Adjust placeholder styling */
 .entry-body::placeholder {
-    font-size: 18px; /* Make placeholder text larger */
+    font-size: 18px; /* Increase the size of the placeholder */
     color: #bbb; /* Light color for better visibility */
+    padding-top: 10px; /* Keep the placeholder a bit higher */
+    line-height: 1.4; /* Adjust line height to make it more spaced */
 }
+
 
 .entry-body:focus {
     outline: none;
