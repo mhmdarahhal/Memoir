@@ -251,18 +251,20 @@ body {
 
 /* Modal Content */
 .modal-content {
-    background-color: #fff;
+    background: linear-gradient(135deg, #351fc4, #ffffff); /* Gradient background */
     margin: 15% auto;
     padding: 20px;
-    border: 1px solid #ccc;
+    border: 1px solid #ffc021; /* Yellow border */
     width: 80%;
     max-width: 500px;
     border-radius: 10px;
+    color: #fff; /* White text for better contrast */
+    font-family: Arial, sans-serif;
 }
 
 /* Close Button */
 .close-btn {
-    color: #aaa;
+    color: #ffc021; /* Yellow close button color */
     float: right;
     font-size: 28px;
     font-weight: bold;
@@ -271,7 +273,36 @@ body {
 
 .close-btn:hover,
 .close-btn:focus {
-    color: black;
+    color: #fff; /* White on hover for the close button */
     text-decoration: none;
     cursor: pointer;
 }
+
+/* Style for the Save Now button */
+.submit-btn {
+    background: linear-gradient(#ffffff,#ffc021); /* Yellow background */
+    color: #351fc4; /* Purple text */
+    font-size: 16px; /* Larger font size */
+    font-weight: bold; /* Bold text */
+    border: none; /* Remove default border */
+    border-radius: 25px; /* Rounded edges */
+    padding: 10px 20px; /* Add padding */
+    cursor: pointer; /* Pointer cursor */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+    margin-top: 20px;
+}
+
+/* Hover effect for the Save Now button */
+.submit-btn:hover {
+    background: linear-gradient(135deg,#ffc021,#ffc021); /* Purple background */
+    color: #351fc4; /* Yellow text */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+}
+
+/* Focus effect (when using keyboard navigation) */
+.submit-btn:focus {
+    outline: 2px solid #ffc021; /* Add a yellow outline */
+    outline-offset: 4px; /* Space between button and outline */
+}
+

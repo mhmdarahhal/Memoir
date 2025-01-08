@@ -3,10 +3,10 @@ function toggleNav() {
     nav.classList.toggle('open');  // Toggle 'open' class to show/hide nav bar
 }
 
-var modal = document.getElementById("settings-modal");
+var modal = document.getElementById("edit-profile-modal");
 
   // Get the button that opens the modal
-  var settingsBtn = document.getElementById("settings");
+  var settingsBtn = document.getElementById("editprofile");
 
   // Get the <span> element that closes the modal
   var closeModalBtn = document.getElementById("close-modal-btn");

@@ -27,7 +27,7 @@
                 <li class="nav-item" id="search">Search</li>
                 <li class="nav-item" id="oldentries">Old Entries</li>
                 <li class="nav-item" id="starredentries">Starred Entries</li>
-                <li class="nav-item" id="settings">Settings</li>
+                <li class="nav-item" id="editprofile">Edit Profile</li>
             </ul>
         </nav>
 
@@ -44,10 +44,10 @@
     </div>
 
     <!-- Modal Structure -->
-    <div id="settings-modal" class="modal">
+    <div id="edit-profile-modal" class="modal">
         <div class="modal-content">
             <span id="close-modal-btn" class="close-btn">&times;</span>
-            <h3>Settings</h3>
+            <h3>Edit Profile</h3>
             <form>
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" placeholder="Enter your name">
@@ -55,7 +55,7 @@
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" placeholder="Enter your email">
 
-                <button type="submit">Save</button>
+                <button class=submit-btn type="submit">Save</button>
             </form>
         </div>
     </div>
