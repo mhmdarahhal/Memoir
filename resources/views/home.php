@@ -24,10 +24,10 @@
     <div class="container">
         <nav class="nav">
             <ul>
-                <li type=button class="nav-item" id="search">Search</li>
-                <li type=button class="nav-item" id="oldentries">Old Entries</li>
-                <li type=button class="nav-item" id="starredentries">Starred Entries</li>
-                <li type=button class="nav-item" id="settings">Settings</li>
+                <li class="nav-item" id="search">Search</li>
+                <li class="nav-item" id="oldentries">Old Entries</li>
+                <li class="nav-item" id="starredentries">Starred Entries</li>
+                <li class="nav-item" id="settings">Settings</li>
             </ul>
         </nav>
 
@@ -41,6 +41,23 @@
                 <textarea class="entry-body" placeholder="Your entry here"></textarea>
             </section>
         </main>
+    </div>
+
+    <!-- Modal Structure -->
+    <div id="settings-modal" class="modal">
+        <div class="modal-content">
+            <span id="close-modal-btn" class="close-btn">&times;</span>
+            <h3>Settings</h3>
+            <form>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name">
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email">
+
+                <button type="submit">Save</button>
+            </form>
+        </div>
     </div>
 
 
