@@ -24,10 +24,17 @@
     <div class="container">
         <nav class="nav">
             <ul>
+<<<<<<< HEAD
                 <li class="nav-item" id="search">Search</li>
                 <li class="nav-item" id="oldentries">Old Entries</li>
                 <li class="nav-item" id="starredentries">Starred Entries</li>
                 <li class="nav-item" id="editprofile">Edit Profile</li>
+=======
+                <li type="button" class="nav-item" id="search">Search</li>
+                <li type="button" class="nav-item" id="oldentries">Old Entries</li>
+                <li type="button" class="nav-item" id="starredentries">Starred Entries</li>
+                <li type="button" class="nav-item" id="settings">Settings</li>
+>>>>>>> a97a5a29a2e38604d7b950a6403452b0c6c5a30f
             </ul>
         </nav>
 
@@ -43,6 +50,7 @@
         </main>
     </div>
 
+<<<<<<< HEAD
     <!-- Modal Structure -->
     <div id="edit-profile-modal" class="modal">
         <div class="modal-content">
@@ -60,6 +68,8 @@
         </div>
     </div>
 
+=======
+>>>>>>> a97a5a29a2e38604d7b950a6403452b0c6c5a30f
 
 
     <script src="home.js"></script>
