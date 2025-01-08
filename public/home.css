@@ -32,13 +32,12 @@ body {
 }
 
 .user-welcome {
-    position: absolute;
-    right: 20px;
-    top: 20px;
     font-size: 18px;
     font-weight: 400;
     font-family: 'Pacifico', sans-serif;
     color: #351fc4;
+    text-align: center;
+    margin-top: 10px;
 }
 
 /* Menu Button */
@@ -53,14 +52,20 @@ body {
     left: 20px;
 }
 
-
-
 /* Layout Container */
 .container {
     display: flex;
-    flex-grow: 1; /* Allow the container to take the remaining height */
+    margin-right: 50px;
     flex-direction: row;
-    overflow: hidden; /* Prevent scrolling */
+    justify-content: center; /* Center horizontally by default */
+    align-items: center; /* Center vertically */
+    height: calc(100vh - 70px); /* Adjust for header height */
+    transition: padding-left 0.3s ease-in-out;
+    padding-left: 0; /* Default padding when nav is closed */
+}
+
+.nav.open + .container {
+    padding-left: 250px; /* Add padding to move content when nav is open */
 }
 
 /* Navigation Styling */
@@ -105,13 +110,13 @@ body {
 
 /* Main Content Area */
 .main-content {
-    margin-left: 270px; /* Leave space for the navigation */
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1; /* Take remaining space */
-    justify-content: flex-start;
-    overflow-y: auto; /* Allow scrolling in main content if needed */
+    max-width: 700px;
+    width: 100%;
+    transition: transform 0.3s ease-in-out; /* Smooth shifting */
+}
+
+.nav.open + .container .main-content {
+    transform: translateX(250px); /* Shift content to the right */
 }
 
 /* Journal Entry Section */
@@ -119,7 +124,7 @@ body {
     width: 100%;
     max-width: 700px;
     background-color: white;
-    padding: 25px;
+    padding: 40px 25px 25px 25px; /* Increased padding-top to push content down */
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     display: flex;
@@ -128,7 +133,7 @@ body {
     margin-bottom: 20px;
     overflow: hidden;
     flex-grow: 1; /* Allow journal box to grow */
-    min-height: 0; /* Allow it to fit inside available space */
+    min-height: 300px; /* Increased height */
 }
 
 /* Title of Entry */
@@ -174,13 +179,18 @@ body {
     width: 100%;
     height: 100%; /* Ensure it takes up the remaining space */
     margin-top: 20px;
-    padding: 12px;
+    padding: 20px; /* Add more padding for better spacing */
     font-size: 16px;
     border-radius: 8px;
     border: 1px solid #ccc;
     font-family: 'Arial', sans-serif;
     transition: border-color 0.3s ease;
     resize: none; /* Disable resizing the textarea */
+}
+
+.entry-body::placeholder {
+    font-size: 18px; /* Make placeholder text larger */
+    color: #bbb; /* Light color for better visibility */
 }
 
 .entry-body:focus {
@@ -203,7 +213,8 @@ body {
     }
 
     .main-content {
-        margin-left: 0;
+        transform: none; /* Disable shift on smaller screens */
+        margin-left: 0; /* Reset left margin */
     }
 
     .entry-title {

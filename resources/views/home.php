@@ -24,10 +24,10 @@
     <div class="container">
         <nav class="nav">
             <ul>
-                <li type=button class="nav-item" id="search">Search</li>
-                <li type=button class="nav-item" id="oldentries">Old Entries</li>
-                <li type=button class="nav-item" id="starredentries">Starred Entries</li>
-                <li type=button class="nav-item" id="settings">Settings</li>
+                <li type="button" class="nav-item" id="search">Search</li>
+                <li type="button" class="nav-item" id="oldentries">Old Entries</li>
+                <li type="button" class="nav-item" id="starredentries">Starred Entries</li>
+                <li type="button" class="nav-item" id="settings">Settings</li>
             </ul>
         </nav>
 
@@ -42,6 +42,7 @@
             </section>
         </main>
     </div>
+
 
 
     <script src="home.js"></script>

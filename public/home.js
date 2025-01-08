@@ -27,3 +27,17 @@ var modal = document.getElementById("settings-modal");
       modal.style.display = "none";
     }
   }
+
+  function toggleNav() {
+    const nav = document.querySelector('.nav'); // Select the nav bar
+    const mainContent = document.querySelector('.main-content'); // Select the main content
+    nav.classList.toggle('open'); // Toggle 'open' class on the nav
+
+    // Check if nav is open or closed and adjust centering
+    if (nav.classList.contains('open')) {
+        mainContent.style.marginLeft = '250px'; // Shift right when nav is open
+    } else {
+        mainContent.style.marginLeft = '0'; // Revert to center when nav is closed
+    }
+}
+
