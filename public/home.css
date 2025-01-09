@@ -165,13 +165,20 @@ body {
     align-items: center;
 }
 
-.entry-date {
+  .entry-date {
     font-size: 16px;
     color: #777;
-}
+    cursor: pointer; /* Changes cursor to indicate interactivity */
+  }
+  .entry-date:hover {
+    color: #333; /* Optional: Change color on hover */
+  }
+  .hidden {
+    display: none; /* Initially hide the input */
+  }
 
 .save-now {
-    background-color: #4CAF50;
+    background: linear-gradient(135deg, #351fc4, #ffc021); /* Gradient background */
     color: white;
     padding: 10px 25px;
     border: none;
@@ -182,7 +189,7 @@ body {
 }
 
 .save-now:hover {
-    background-color: #45a049;
+    background: linear-gradient(180deg, #351fc4, #ffc021); /* Gradient background */
 }
 
 /* Entry Textarea Styling */
@@ -195,7 +202,7 @@ body {
     padding: 20px; /* Adjust padding for better space */
     font-size: 16px;
     border-radius: 8px;
-    border: 1px solid #ccc;
+    border: 1px solid #ffffff;
     font-family: 'Arial', sans-serif;
     transition: border-color 0.3s ease;
     resize: none; /* Disable resizing the textarea */
@@ -214,7 +221,7 @@ body {
 
 .entry-body:focus {
     outline: none;
-    border-color: #4CAF50;
+    border-color: #ffc021;
     box-shadow: 0 0 5px rgba(76, 175, 80, 0.6);
 }
 

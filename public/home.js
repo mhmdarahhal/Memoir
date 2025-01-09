@@ -41,3 +41,57 @@ var modal = document.getElementById("edit-profile-modal");
     }
 }
 
+const entryTitle = document.querySelector(".entry-title");
+const entryBody = document.querySelector(".entry-body");
+
+// Restrict title to a single line and focus on entry-body on Enter
+entryTitle.addEventListener("keydown", (e) => {
+  // Prevent Enter key from creating a new line
+  if (e.key === "Enter") {
+    entryTitle.textContent = entryTitle.textContent
+    .toLowerCase()
+    .replace(/\b\w/g, (char) => char.toUpperCase());
+    e.preventDefault();
+    entryBody.focus(); // Focus the entry body
+  }
+});
+
+
+
+
+const displayDate = document.getElementById("display-date");
+  const datePicker = document.getElementById("date-picker");
+
+  // Get today's date
+  const today = new Date();
+
+  // Format today's date for display in a human-readable format
+  const options = { weekday: "short", year: "numeric", month: "numeric", day: "numeric" };
+  const formattedDate = today.toLocaleDateString(undefined, options);
+
+  // Set the `displayDate` to today's date
+  displayDate.textContent = `📅 ${formattedDate}`;
+
+  // Format today's date for the date input (yyyy-mm-dd format)
+  const isoDate = today.toISOString().split("T")[0]; // Extract yyyy-mm-dd format
+
+  // Set the default value of the date picker to today's date
+  datePicker.value = isoDate;
+
+
+
+  displayDate.addEventListener("click", () => {
+    datePicker.classList.remove("hidden");
+    datePicker.focus();
+  });
+
+  datePicker.addEventListener("change", () => {
+    const selectedDate = new Date(datePicker.value);
+    const options = { weekday: "short", year: "numeric", month: "numeric", day: "numeric" };
+    displayDate.textContent = `📅 ${selectedDate.toLocaleDateString(undefined, options)}`;
+    datePicker.classList.add("hidden");
+  });
+
+  datePicker.addEventListener("blur", () => {
+    datePicker.classList.add("hidden");
+  });

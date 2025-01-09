@@ -24,25 +24,19 @@
     <div class="container">
         <nav class="nav">
             <ul>
-<<<<<<< HEAD
-                <li class="nav-item" id="search">Search</li>
-                <li class="nav-item" id="oldentries">Old Entries</li>
-                <li class="nav-item" id="starredentries">Starred Entries</li>
+                <li class="nav-item" id="myentries">My Entries</li>
                 <li class="nav-item" id="editprofile">Edit Profile</li>
-=======
-                <li type="button" class="nav-item" id="search">Search</li>
-                <li type="button" class="nav-item" id="oldentries">Old Entries</li>
-                <li type="button" class="nav-item" id="starredentries">Starred Entries</li>
-                <li type="button" class="nav-item" id="settings">Settings</li>
->>>>>>> a97a5a29a2e38604d7b950a6403452b0c6c5a30f
+                <li class="nav-item" id="logout">Log Out</li>
+
             </ul>
         </nav>
 
         <main class="main-content">
             <section class="journal-entry">
-                <h1 class="entry-title">Entry Title</h1>
+                <h1 type="text" class="entry-title" contenteditable="true">Title</h1>
                 <div class="entry-header">
-                    <span class="entry-date">📅 Sat. 1/4/2025</span>
+                    <span class="entry-date" id="display-date">📅 Sat. 1/4/2025</span>
+                    <input type="date" id="date-picker" class="hidden" />
                     <button class="save-now">Save Now</button>
                 </div>
                 <textarea class="entry-body" placeholder="Your entry here"></textarea>
@@ -50,7 +44,6 @@
         </main>
     </div>
 
-<<<<<<< HEAD
     <!-- Modal Structure -->
     <div id="edit-profile-modal" class="modal">
         <div class="modal-content">
@@ -68,8 +61,7 @@
         </div>
     </div>
 
-=======
->>>>>>> a97a5a29a2e38604d7b950a6403452b0c6c5a30f
+
 
 
     <script src="home.js"></script>
