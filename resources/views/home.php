@@ -35,7 +35,7 @@
             <section class="journal-entry">
                 <h1 type="text" class="entry-title" contenteditable="true">Title</h1>
                 <div class="entry-header">
-                    <span class="entry-date" id="display-date">📅 Sat. 1/4/2025</span>
+                    <span class="entry-date" id="display-date"></span>
                     <input type="date" id="date-picker" class="hidden" />
                     <button class="save-now">Save Now</button>
                 </div>
@@ -48,15 +48,41 @@
     <div id="edit-profile-modal" class="modal">
         <div class="modal-content">
             <span id="close-modal-btn" class="close-btn">&times;</span>
-            <h3>Edit Profile</h3>
+            <h2>Edit Profile</h2>
             <form>
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" placeholder="Enter your name">
 
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" placeholder="Enter your email">
+                <div class="form-group">
+                    <label for="firstname">First Name</label>
+                    <input type="text" id="firstname" name="first name" placeholder="Enter your first name" required>
+                </div>
 
-                <button class=submit-btn type="submit">Save</button>
+                <div class="form-group">
+                    <label for="lastname">Last Name</label>
+                    <input type="text" id="lastname" name="last name" placeholder="Enter your last name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" placeholder="Enter your username" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" id="confirm-password" name="confirm-password"
+                        placeholder="Confirm your password" required>
+                </div>
+
+                <button type="submit" class="save-profile-btn">Save Changes</button>
             </form>
         </div>
     </div>

@@ -33,7 +33,7 @@ body {
 
 .user-welcome {
     font-size: 18px;
-    font-weight: 400;
+    font-weight: 250;
     font-family: 'Pacifico', sans-serif;
     color: #351fc4;
     text-align: center;
@@ -102,9 +102,11 @@ body {
     margin: 10px 0; /* Add spacing between items */
     padding: 10px 0; /* Add padding inside the item */
     text-align: left; /* Align text to the left */
+    font-family: 'Pacifico', cursive;
+
     font-size: 20px;
-    font-weight: 600;
-    color: #140285; /* Text color */
+    font-weight: 300;
+    color: #ffffff; /* Text color */
     text-decoration: none; /* Remove underline */
     cursor: pointer; /* Add pointer cursor */
     border: none; /* No border */
@@ -171,29 +173,24 @@ body {
     cursor: pointer; /* Changes cursor to indicate interactivity */
   }
   .entry-date:hover {
-    color: #333; /* Optional: Change color on hover */
+    color: #ffc021d2; /* Optional: Change color on hover */
   }
   .hidden {
     display: none; /* Initially hide the input */
   }
 
-.save-now {
-    background: linear-gradient(135deg, #351fc4, #ffc021); /* Gradient background */
-    color: white;
-    padding: 10px 25px;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+#date-picker {
+    display: hide; /* Ensures the input starts on a new line */
+    width: 200px; /* Set width for styling */
+    padding: 10px; /* Add padding */
+    font-size: 16px; /* Adjust font size */
+    border: 2px solid #ffc021d2; /* Add border */
+    border-radius: 5px; /* Rounded corners */
+    background-color: #ffffff; /* Light background color */
 }
 
-.save-now:hover {
-    background: linear-gradient(180deg, #351fc4, #ffc021); /* Gradient background */
-}
 
-/* Entry Textarea Styling */
-/* Entry Textarea Styling */
+
 /* Entry Textarea Styling */
 .entry-body {
     width: 100%;
@@ -225,35 +222,8 @@ body {
     box-shadow: 0 0 5px rgba(76, 175, 80, 0.6);
 }
 
-/* Add some responsive behavior for smaller screens */
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-    }
 
-    .nav {
-        width: 100%;
-        position: static;
-        box-shadow: none;
-        left: 0; /* Ensure it's always visible on small screens */
-    }
 
-    .main-content {
-        transform: none; /* Disable shift on smaller screens */
-        margin-left: 0; /* Reset left margin */
-    }
-
-    .entry-title {
-        font-size: 24px;
-    }
-
-    .journal-entry {
-        width: 100%;
-        height: auto; /* Allow auto height on small screens */
-    }
-}
-
-/* Modal (hidden by default) */
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Fixed in the viewport */
@@ -262,22 +232,90 @@ body {
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
     background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent background */
+    justify-content: center; /* Horizontally center modal */
+    align-items: center; /* Vertically center modal */
 }
 
-/* Modal Content */
+
 .modal-content {
-    background: linear-gradient(135deg, #351fc4, #ffffff); /* Gradient background */
+    background: linear-gradient(135deg, #ffc021, #ffffff); /* Gradient background */
     margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #ffc021; /* Yellow border */
+    padding: 20px 30px;
+    border: 1px solid #351fc4; /* Yellow border */
     width: 80%;
     max-width: 500px;
     border-radius: 10px;
-    color: #fff; /* White text for better contrast */
+    color: #333; /* Darker text color for better readability */
     font-family: Arial, sans-serif;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
 }
+
+h2{
+    color: #351fc4;
+    font-family: 'Pacifico', cursive;
+    font-weight: 600;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 16px;
+    font-family: 'Pacifico', cursive;
+    font-weight: 100;    color: #351fc4; /* Purple color for labels */
+    margin-bottom: 5px;
+    display: block;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 2px solid #ffffff;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    color: #333;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease-in-out;
+}
+
+input:focus {
+    outline: none;
+    border-color: #ffc021; /* Yellow border on focus */
+    box-shadow: 0 0 5px rgba(255, 192, 33, 0.5);
+}
+
+.save-profile-btn {
+    background: linear-gradient(135deg, #ffc021d2, #351fc4); /* Yellow to white gradient */
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Pacifico', cursive;
+
+    font-weight: 100;
+    transition: all 0.3s ease-in-out;
+}
+
+.save-profile-btn:hover {
+    background: linear-gradient(175deg, #ffc021d2,#351fc4); /* Reverse gradient */
+}
+
+.save-profile-btn:focus {
+    outline: none;
+    box-shadow: 0 0 6px rgba(255, 192, 33, 0.8);
+}
+
 
 /* Close Button */
 .close-btn {
@@ -295,31 +333,20 @@ body {
     cursor: pointer;
 }
 
-/* Style for the Save Now button */
-.submit-btn {
-    background: linear-gradient(#ffffff,#ffc021); /* Yellow background */
-    color: #351fc4; /* Purple text */
-    font-size: 16px; /* Larger font size */
-    font-weight: bold; /* Bold text */
-    border: none; /* Remove default border */
-    border-radius: 25px; /* Rounded edges */
-    padding: 10px 20px; /* Add padding */
-    cursor: pointer; /* Pointer cursor */
-    transition: all 0.3s ease; /* Smooth transition for hover effects */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
-    margin-top: 20px;
-}
 
-/* Hover effect for the Save Now button */
-.submit-btn:hover {
-    background: linear-gradient(135deg,#ffc021,#ffc021); /* Purple background */
-    color: #351fc4; /* Yellow text */
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); /* Stronger shadow */
-}
 
-/* Focus effect (when using keyboard navigation) */
-.submit-btn:focus {
-    outline: 2px solid #ffc021; /* Add a yellow outline */
-    outline-offset: 4px; /* Space between button and outline */
+.save-now {
+    background: linear-gradient(135deg, #ffc021d2, #351fc4); /* Yellow to white gradient */
+    color: white;
+    padding: 10px 25px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Pacifico', cursive;
+    font-weight: 100;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
-
+.save-now:hover {
+    background: linear-gradient(165deg, #ffc021d2,#351fc4); /* Reverse gradient */
+}
