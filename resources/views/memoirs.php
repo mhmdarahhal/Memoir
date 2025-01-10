@@ -21,15 +21,18 @@
         <span>Welcome, jezzeke</span>
     </div>
 
-    <div class="container">
-        <nav class="nav">
-            <ul>
-                <li class="nav-item" id="memoirs">Memoirs</li>
-                <li class="nav-item" id="editprofile">Edit Profile</li>
-                <li class="nav-item" id="logout">Log Out</li>
+    <nav class="nav">
+        <ul>
+            <li class="nav-item" id="memoirs">Memoirs</li>
+            <li class="nav-item" id="editprofile">Edit Profile</li>
+            <li class="nav-item" id="logout">Log Out</li>
 
-            </ul>
-        </nav>
+        </ul>
+    </nav>
+
+
+    <div class="container">
+
         <section class="dashboard">
             <!-- Entry Stats -->
             <div class="entry-stats">
@@ -136,8 +139,8 @@
             </div>
         </div>
 
-
-        <script src="memoirs.js"></script>
+    </div>
+    <script src="memoirs.js"></script>
 
 </body>
 
