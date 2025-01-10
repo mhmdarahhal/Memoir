@@ -35,7 +35,6 @@ var modal = document.getElementById("edit-profile-modal");
 
     // Check if nav is open or closed and adjust centering
     if (nav.classList.contains('open')) {
-        mainContent.style.marginLeft = '250px'; // Shift right when nav is open
     } else {
         mainContent.style.marginLeft = '0'; // Revert to center when nav is closed
     }
@@ -95,3 +94,51 @@ const displayDate = document.getElementById("display-date");
   datePicker.addEventListener("blur", () => {
     datePicker.classList.add("hidden");
   });
+
+  const saveButton = document.querySelector(".save-now");
+saveButton.addEventListener("click", () => {
+    const title = document.querySelector(".entry-title").textContent.trim();
+    const body = document.querySelector(".entry-body").value.trim();
+    const category = document.getElementById("category-select").value;
+    const mood = document.getElementById("mood-select").value;
+
+    if (title && body) {
+        console.log("Saving Memoir Entry...");
+        console.log("Title:", title);
+        console.log("Body:", body);
+        console.log("Category:", category);
+        console.log("Mood:", mood);
+
+        alert("Your memoir has been saved!");
+    } else {
+        alert("Please fill in the title and entry text.");
+    }
+});
+
+
+
+const totalEntries = 50;
+    const weeklyEntries = 4;
+    const monthlyEntries = 15;
+    document.getElementById('totalEntries').textContent = totalEntries;
+    document.getElementById('weeklyEntries').textContent = weeklyEntries;
+    document.getElementById('monthlyEntries').textContent = monthlyEntries;
+
+
+
+    // Motivational Quote
+    const quotes = [
+        '"The best way to predict the future is to create it."',
+        '"Success is not the key to happiness. Happiness is the key to success."',
+        '"Believe in yourself and all that you are. Know that there is something inside you that is greater than any obstacle."',
+        '"Don’t watch the clock; do what it does. Keep going."',
+        '"Your time is limited, so don’t waste it living someone else’s life."'
+    ];
+
+    function getRandomQuote() {
+        const randomIndex = Math.floor(Math.random() * quotes.length);
+        document.getElementById('quoteText').textContent = quotes[randomIndex];
+    }
+
+    document.getElementById('newQuote').addEventListener('click', getRandomQuote);
+    getRandomQuote();

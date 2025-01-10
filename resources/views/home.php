@@ -32,12 +32,59 @@
         </nav>
 
         <main class="main-content">
+            <section class="dashboard">
+                <!-- Entry Stats -->
+                <div class="entry-stats">
+                    <h3>Entry Stats</h3>
+                    <p>Total Entries: <span id="totalEntries">50</span></p>
+                    <p>Entries This Week: <span id="weeklyEntries">4</span></p>
+                    <p>Entries This Month: <span id="monthlyEntries">15</span></p>
+                </div>
+
+                <!-- Mood Tracker -->
+                <div class="mood-tracker">
+                    <h3>Mood Tracker</h3>
+                    <p>Overall Mood: <span id="overallMood">😊</span></p>
+                    <p>Total Moods Recorded: <span id="totalMoods">20</span></p>
+                    <p>Happy: <span id="happyCount">10</span></p>
+                    <p>Neutral: <span id="neutralCount">5</span></p>
+                    <p>Sad: <span id="sadCount">3</span></p>
+                    <p>Angry: <span id="angryCount">2</span></p>
+                </div>
+
+                <!-- Motivational Quote -->
+                <div class="motivational-quotes">
+                    <h3>Motivational Quote</h3>
+                    <p id="quoteText">"The best way to predict the future is to create it."</p>
+                    <button id="newQuote">Get New Quote</button>
+                </div>
+            </section>
+
             <section class="journal-entry">
                 <h1 type="text" class="entry-title" contenteditable="true">Title</h1>
+
                 <div class="entry-header">
                     <span class="entry-date" id="display-date"></span>
                     <input type="date" id="date-picker" class="hidden" />
                     <button class="save-now">Save Now</button>
+                </div>
+                <!-- Dropdowns for Category and Mood -->
+                <div class="entry-options">
+                    <label for="category-select">Category:</label>
+                    <select id="category-select">
+                        <option value="personal">Personal</option>
+                        <option value="work">Work</option>
+                        <option value="travel">Travel</option>
+                        <option value="health">Health</option>
+                    </select>
+
+                    <label for="mood-select">Mood:</label>
+                    <select id="mood-select">
+                        <option value="happy">Happy</option>
+                        <option value="sad">Sad</option>
+                        <option value="excited">Excited</option>
+                        <option value="thoughtful">Thoughtful</option>
+                    </select>
                 </div>
                 <textarea class="entry-body" placeholder="Your entry here"></textarea>
             </section>
