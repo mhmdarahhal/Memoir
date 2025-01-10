@@ -24,7 +24,7 @@
     <div class="container">
         <nav class="nav">
             <ul>
-                <li class="nav-item" id="myentries">My Entries</li>
+                <li class="nav-item" id="memoirs">Memoirs</li>
                 <li class="nav-item" id="editprofile">Edit Profile</li>
                 <li class="nav-item" id="logout">Log Out</li>
 
