@@ -56,7 +56,7 @@ body {
 .container {
     display: flex;
     margin-right: 50px;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center; /* Center horizontally by default */
     align-items: center; /* Center vertically */
     height: calc(100vh - 70px); /* Adjust for header height */
@@ -76,7 +76,7 @@ body {
     padding: 20px;
     height: 100%;
     box-shadow: 3px 0 6px rgba(0, 0, 0, 0.1);
-    position: absolute;
+    position: fixed;
     top: 0;
     left: -250px; /* Hidden by default */
     transition: left 0.3s ease-in-out; /* Smooth slide in/out */
@@ -130,100 +130,6 @@ body {
 .nav.open + .container .main-content {
     transform: translateX(250px); /* Shift content to the right */
 }
-
-/* Journal Entry Section */
-.journal-entry {
-    width: 100%;
-    background-color: white;
-    padding: 10px 25px 25px 25px; /* Increased padding-top for more space inside */
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    margin-top: 30px; /* Increased margin-top to push journal entry down */
-
-    overflow: hidden;
-    flex-grow: 1; /* Allow journal box to grow */
-    min-height: 0; /* Allow it to fit inside available space */
-}
-
-/* Title of Entry */
-.entry-title {
-    font-size: 28px;
-    font-family: 'Pacifico', cursive;
-    color: #351fc4;
-    text-align: center;
-    margin-bottom: 5px;
-    letter-spacing: 1px;
-}
-
-/* Entry Header */
-.entry-header {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 5px;
-    align-items: center;
-}
-
-  .entry-date {
-    font-size: 16px;
-    font-family: 'Pacifico', cursive;
-    color: #777;
-    cursor: pointer; /* Changes cursor to indicate interactivity */
-  }
-  .entry-date:hover {
-    color: #ffc021d2; /* Optional: Change color on hover */
-  }
-  .hidden {
-    display: none; /* Initially hide the input */
-  }
-
-#date-picker {
-    display: hide; /* Ensures the input starts on a new line */
-    width: 200px; /* Set width for styling */
-    padding: 10px; /* Add padding */
-    font-size: 16px; /* Adjust font size */
-    border: 2px solid #ffc021d2; /* Add border */
-    border-radius: 5px; /* Rounded corners */
-    background-color: #ffffff; /* Light background color */
-}
-
-
-
-/* Entry Textarea Styling */
-.entry-body {
-    width: 100%;
-    height: 250px; /* Increase the height for better visibility */
-    margin-top: 20px;
-    padding: 20px; /* Adjust padding for better space */
-    font-size: 16px;
-    border-radius: 8px;
-    border: 1px solid #ffffff;
-    font-family: 'Arial', sans-serif;
-    transition: border-color 0.3s ease;
-    resize: none; /* Disable resizing the textarea */
-    box-sizing: border-box; /* Ensure padding doesn't overflow the border */
-    overflow: auto; /* Allow for scrolling inside textarea if content overflows */
-}
-
-/* Adjust placeholder styling */
-.entry-body::placeholder {
-    font-size: 18px; /* Increase the size of the placeholder */
-    color: #bbb; /* Light color for better visibility */
-    padding-top: 10px; /* Keep the placeholder a bit higher */
-    line-height: 1.4; /* Adjust line height to make it more spaced */
-}
-
-
-.entry-body:focus {
-    outline: none;
-    border-color: #ffc021;
-    box-shadow: 0 0 5px rgba(76, 175, 80, 0.6);
-}
-
-
 
 .modal {
     display: none; /* Hidden by default */
@@ -334,54 +240,84 @@ input:focus {
     cursor: pointer;
 }
 
+.memoirs-grid {
+    display: flex;
+    flex-wrap: wrap; /* Ensure the cards wrap to the next line */
+    gap: 20px; /* Space between the cards */
+    padding: 20px;
+    margin-top: 20px;
+    background-color: #ffffff; /* Optional background for the grid area */
+    border-radius: 10px;
+    justify-content: center; /* Center-align cards in the container */
+}
 
-
-.save-now {
-    background: linear-gradient(135deg, #ffc021d2, #351fc4); /* Yellow to white gradient */
-    color: white;
-    padding: 10px 25px;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
+.memoir-card {
+    background: linear-gradient(135deg, #ffc021, #ffffff); /* Gradient for cards */
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    width: 250px; /* Fixed width for the cards */
+    text-align: center;
     font-family: 'Pacifico', cursive;
-    font-weight: 100;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-.save-now:hover {
-    background: linear-gradient(165deg, #ffc021d2,#351fc4); /* Reverse gradient */
+    color: #351fc4;
+    transition: all 0.3s ease-in-out;
 }
 
-.entry-options {
+.memoir-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.memoir-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.memoir-date,
+.memoir-category,
+.memoir-mood {
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+.controls {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 15px 0;
+    margin: 20px 0;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-.entry-options label {
+.sort-controls,
+.filter-controls {
+    display: flex;
+    align-items: center;
+}
+
+label {
+    margin-right: 10px;
     font-size: 16px;
     font-family: 'Pacifico', cursive;
-    font-weight: 100;
     color: #351fc4;
-    margin-right: 10px;
 }
 
-.entry-options select {
-    font-size: 16px;
+select {
     padding: 5px 10px;
-    border: 1px solid #ffffff;
+    font-size: 14px;
+    border: 1px solid #ccc;
     border-radius: 5px;
-    background-color: #ffffff;
-    color: #351fc4;
-    font-family: 'Arial', sans-serif;
-    transition: border-color 0.3s ease-in-out;
+    font-family: Arial, sans-serif;
+    color: #333;
+    outline: none;
+    transition: border-color 0.3s ease;
 }
 
-.entry-options select:focus {
-    outline: none;
+select:focus {
     border-color: #ffc021;
-    box-shadow: 0 0 5px rgba(255, 192, 33, 0.5);
 }
 
 
