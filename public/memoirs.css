@@ -392,3 +392,12 @@ select:focus {
 .motivational-quotes button:hover {
     background: linear-gradient(135deg, #351fc4, #ffc021); /* Reverse gradient on hover */
 }
+
+@media (max-width: 768px) {
+    #dashboard {
+        position: absolute;
+        top: 100%;
+        width: 100%;
+        background-color: #f0f0f0;  /* Optional: Add background for better visibility */
+    }
+}
