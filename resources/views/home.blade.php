@@ -12,7 +12,9 @@
 
 <body>
     <header class="header">
-        <div class="logo">Memoir</div>
+        <div class="logo" onclick="window.location='{{ route('home') }}'">
+            Memoir
+        </div>
         <button class="menu-btn" onclick="toggleNav()">☰</button> <!-- Menu button -->
 
     </header>
@@ -24,7 +26,7 @@
     <div class="container">
         <nav class="nav">
             <ul>
-                <li class="nav-item" id="memoirs">Memoirs</li>
+                <li class="nav-item" id="memoirs" onclick="window.location='{{ route('memoirs') }}'">Memoirs</li>
                 <li class="nav-item" id="editprofile">Edit Profile</li>
                 <li class="nav-item" id="logout">Log Out</li>
 
@@ -66,7 +68,10 @@
                 <div class="entry-header">
                     <span class="entry-date" id="display-date"></span>
                     <input type="date" id="date-picker" class="hidden" />
-                    <button class="save-now">Save Now</button>
+                    <form method="POST" action="{{ route('save.now') }}">
+                        @csrf
+                        <button type="submit" class="save-now">Save Now</button>
+                    </form>
                 </div>
                 <!-- Dropdowns for Category and Mood -->
                 <div class="entry-options">

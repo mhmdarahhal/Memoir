@@ -1,13 +1,39 @@
 <?php
 
+use App\Http\Controllers\homeController;
+use App\Http\Controllers\loginController;
+use App\Http\Controllers\memoirsController;
 use App\Http\Controllers\registerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 
-Route::get('/register', function () {
-    return view("/register");
+
+
+
+Route::middleware(['web'])->group(function () {
+    Route::get('/register', function () {
+        return view('register');
+    })->name('register');
+    Route::post('/register', [registerController::class, 'register']);
+
+    Route::get('/', function () {
+        return view("/login");
+    });
+    Route::get('/login', function () {
+        return view("/login");
+    });
+    Route::post('/login', [loginController::class, 'login']);
+
+    Route::get('/home', function () {
+        return view("/home");
+    })->name('home');
+
+    Route::post('/save-now', [homeController::class, 'saveNow'])->name('save.now');
+
+
+    Route::get('/memoirs', [memoirsController::class, 'memoirs'])->name('memoirs');
 });
-Route::post('/register', [registerController::class, 'register']);
+
 
 // Route::get('/', function () {
 //     return view('login');
@@ -36,3 +62,4 @@ Route::post('/register', [registerController::class, 'register']);
 // Route::post('/memoirs', function () {
 //     return view('memoirs');
 // });
+
