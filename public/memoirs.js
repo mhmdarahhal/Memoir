@@ -1,5 +1,3 @@
-
-
 var modal = document.getElementById("edit-profile-modal");
 
   // Get the button that opens the modal
@@ -29,26 +27,24 @@ var modal = document.getElementById("edit-profile-modal");
     const nav = document.querySelector('.nav'); // Select the nav bar
     const mainContent = document.querySelector('.main-content'); // Select the main content
     nav.classList.toggle('open'); // Toggle 'open' class on the nav
-
-
 }
 
 const memoirs = [
     {
         title: "A Walk in the Park",
-        date: "January 1, 2025",
+        date: "2025-01-01",
         category: "Nature",
         mood: "Relaxed"
     },
     {
         title: "My First Job",
-        date: "December 15, 2024",
+        date: "2024-12-15",
         category: "Career",
         mood: "Excited"
     },
     {
         title: "A Rainy Evening",
-        date: "November 20, 2024",
+        date: "2024-11-20",
         category: "Reflection",
         mood: "Peaceful"
     },
@@ -62,11 +58,14 @@ memoirs.forEach(memoir => {
     card.classList.add('memoir-card');
     card.innerHTML = `
         <h3 class="memoir-title">${memoir.title}</h3>
-        <p class="memoir-date">Date: ${memoir.date}</p>
+        <p class="memoir-date">Date: ${new Date(memoir.date).toDateString()}</p>
         <p class="memoir-category">Category: ${memoir.category}</p>
         <p class="memoir-mood">Mood: ${memoir.mood}</p>
     `;
     memoirsGrid.appendChild(card);
+    card.addEventListener('click', function() {
+        openMemoirModal(this);
+    });
 });
 
 
@@ -86,6 +85,9 @@ function displayMemoirs(filteredMemoirs) {
             <p class="memoir-mood">Mood: ${memoir.mood}</p>
         `;
         memoirsGrid.appendChild(card);
+        card.addEventListener('click', function() {
+            openMemoirModal(this);
+        });
     });
 }
 
@@ -102,7 +104,7 @@ function sortMemoirs(memoirs, criterion) {
 // Function to filter memoirs by category
 function filterMemoirsByCategory(memoirs, category) {
     if (category === 'all') return memoirs;
-    return memoirs.filter(memoir => memoir.category === category);
+    return memoirs.filter(memoir => memoir.category.toLowerCase() === category.toLowerCase());
 }
 
 // Event listeners for sorting and filtering
@@ -179,3 +181,4 @@ function moveDashboard() {
         }
     }
 }
+

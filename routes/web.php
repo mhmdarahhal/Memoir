@@ -21,7 +21,7 @@ Route::middleware(['web'])->group(function () {
     });
     Route::get('/login', function () {
         return view("/login");
-    });
+    })->name('login');
     Route::post('/login', [loginController::class, 'login']);
 
     Route::get('/home', function () {
@@ -32,34 +32,9 @@ Route::middleware(['web'])->group(function () {
 
 
     Route::get('/memoirs', [memoirsController::class, 'memoirs'])->name('memoirs');
+
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+
 });
-
-
-// Route::get('/', function () {
-//     return view('login');
-// });
-// Route::post('/', function () {
-//     return view('login');
-// });
-
-// Route::get('/home', function () {
-//     return view('home');
-// });
-// Route::post('/home', function () {
-//     return view('home');
-// });
-
-// Route::get('/register', function () {
-//     return view('register');
-// });
-// Route::post('/register', function () {
-//     return view('register');
-// });
-
-// Route::get('/memoirs', function () {
-//     return view('memoirs');
-// });
-// Route::post('/memoirs', function () {
-//     return view('memoirs');
-// });
 

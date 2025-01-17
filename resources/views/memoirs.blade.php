@@ -87,7 +87,7 @@
 
 
         <div class="memoirs-grid">
-            <div class="memoir-card">
+            <div class="memoir-card" onclick="openMemoirModal(this)">
                 <h3 class="memoir-title">Memoir Title</h3>
                 <p class="memoir-date">Date: January 10, 2025</p>
                 <p class="memoir-category">Category: Personal</p>
@@ -144,6 +144,7 @@
         </div>
 
     </div>
+
     <script src="memoirs.js"></script>
 
 </body>

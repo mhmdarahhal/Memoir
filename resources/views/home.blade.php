@@ -28,7 +28,12 @@
             <ul>
                 <li class="nav-item" id="memoirs" onclick="window.location='{{ route('memoirs') }}'">Memoirs</li>
                 <li class="nav-item" id="editprofile">Edit Profile</li>
-                <li class="nav-item" id="logout">Log Out</li>
+                <li class="nav-item" id="logout">
+                    <form method="POST" action="{{ route('logout') }}" style="display: inline;">
+                        @csrf
+                        <button type="submit" class="nav-item">Log Out</button>
+                    </form>
+                </li>
 
             </ul>
         </nav>
@@ -125,7 +130,8 @@
 
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                    <input type="password" id="password" name="password" placeholder="Enter your password"
+                        required>
                 </div>
 
                 <div class="form-group">
