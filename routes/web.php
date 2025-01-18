@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\authController;
 use App\Http\Controllers\homeController;
-use App\Http\Controllers\loginController;
 use App\Http\Controllers\memoirsController;
 use App\Http\Controllers\registerController;
 use Illuminate\Support\Facades\Route;
@@ -22,7 +22,7 @@ Route::middleware(['web'])->group(function () {
     Route::get('/login', function () {
         return view("/login");
     })->name('login');
-    Route::post('/login', [loginController::class, 'login']);
+    Route::post('/login', [authController::class, 'login']);
 
     Route::get('/home', function () {
         return view("/home");
@@ -33,7 +33,7 @@ Route::middleware(['web'])->group(function () {
 
     Route::get('/memoirs', [memoirsController::class, 'memoirs'])->name('memoirs');
 
-    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+    Route::post('/logout', [authController::class, 'logout'])->name('logout');
 
 
 });
