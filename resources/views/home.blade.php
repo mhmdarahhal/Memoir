@@ -7,7 +7,7 @@
     <title>Home Page</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Pacifico&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="home.css">
+        <link rel="stylesheet" href="{{ asset('css/home.css') }}">
 </head>
 
 <body>
@@ -148,7 +148,7 @@
 
 
 
-    <script src="home.js"></script>
+    <script src="js/home.js"></script>
 
 </body>
 

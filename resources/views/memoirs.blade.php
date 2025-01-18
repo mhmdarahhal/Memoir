@@ -7,7 +7,7 @@
     <title>Home Page</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Pacifico&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="memoirs.css">
+        <link rel="stylesheet" href="{{ asset('css/memoirs.css') }}">
 </head>
 
 <body>
@@ -27,7 +27,12 @@
         <ul>
             <li class="nav-item" id="newmemoir" onclick="window.location='{{ route('home') }}'">New Memoir</li>
             <li class="nav-item" id="editprofile">Edit Profile</li>
-            <li class="nav-item" id="logout">Log Out</li>
+            <li class="nav-item" id="logout">
+                <form method="POST" action="{{ route('logout') }}" style="display: inline;">
+                    @csrf
+                    <button type="submit" class="nav-item">Log Out</button>
+                </form>
+            </li>
 
         </ul>
     </nav>
@@ -145,7 +150,7 @@
 
     </div>
 
-    <script src="memoirs.js"></script>
+    <script src="js/memoirs.js"></script>
 
 </body>
 
