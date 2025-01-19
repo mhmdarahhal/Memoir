@@ -21,7 +21,7 @@ class AuthController extends Controller
         }
 
         return back()->withErrors([
-            'username' => 'The provided credentials do not match our records.',
+            'login_error' => 'The provided username or password is incorrect.',
         ]);
     }
 

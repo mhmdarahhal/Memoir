@@ -15,6 +15,7 @@
     <div class="loginBox">
         <h2>Login</h2>
 
+
         <form action="/login" method="POST">
             @csrf
             <div class="form">
@@ -28,7 +29,12 @@
             <button type="submit" class="login-btn">Login</button>
             <p class="register-link">Don't have an account? <a href="{{ route('register') }}">Register here</a></p>
         </form>
-
+<br>
+        @if ($errors->has('login_error'))
+        <div class="alert-danger">
+            {{ $errors->first('login_error') }}
+        </div>
+    @endif
     </div>
 
 </body>

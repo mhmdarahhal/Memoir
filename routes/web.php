@@ -35,6 +35,6 @@ Route::middleware(['web'])->group(function () {
 
     Route::post('/logout', [authController::class, 'logout'])->name('logout');
 
-
+    Route::get('/check-username', [RegisterController::class, 'checkUsername']);
 });
 

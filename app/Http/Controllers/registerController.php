@@ -19,7 +19,7 @@ class registerController extends Controller
             'lastname' => ['required', 'max:25'],
             'gender' => ['required', 'max:6'],
             'dateofbirth' => ['required', 'date'],
-            'username' => 'required',
+            'username' => ['required', 'unique:user,username'],
             'email' => ['required', 'email'],
             'password' => ['required', new Password]
         ]);
@@ -33,5 +33,12 @@ class registerController extends Controller
             'password' => Hash::make($request->input('password')),
         ]);
         return view('login');
+    }
+    public function checkUsername(Request $request)
+    {
+        $username = $request->query('username');
+        $exists = User::where('username', $username)->exists();
+
+        return response()->json(['exists' => $exists]);
     }
 }
