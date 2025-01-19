@@ -12,17 +12,15 @@
 
 <body>
     <header class="header">
-        <div class="logo" onclick="window.location='{{ route('home') }}'">
+        <div class="logo" >
             Memoir
         </div>
         <button class="menu-btn" onclick="toggleNav()">☰</button> <!-- Menu button -->
 
     </header>
-
-    <div class="user-welcome">
-        <span>Welcome, jezzeke</span>
+    <div class="user-welcome" data-username="{{ $username }}">
+        <span>Welcome, {{ $username }}</span>
     </div>
-
     <div class="container">
         <nav class="nav">
             <ul>

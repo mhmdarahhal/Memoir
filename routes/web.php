@@ -26,12 +26,15 @@ Route::middleware(['web'])->group(function () {
 
     Route::get('/home', function () {
         return view("/home");
-    })->name('home');
+    });
 
     Route::post('/save-now', [homeController::class, 'saveNow'])->name('save.now');
 
+    Route::get('/home', [homeController::class, 'home'])->name(name: 'home')->middleware('auth');
 
-    Route::get('/memoirs', [memoirsController::class, 'memoirs'])->name('memoirs');
+
+    Route::get('/memoirs', [MemoirsController::class, 'memoirs'])->name(name: 'memoirs')->middleware('auth');
+
 
     Route::post('/logout', [authController::class, 'logout'])->name('logout');
 

@@ -1,3 +1,11 @@
+    document.addEventListener("DOMContentLoaded", function () {
+        // Get the element and the username
+        const userWelcome = document.querySelector('.user-welcome');
+        const username = userWelcome.dataset.username;
+
+        // Update the span text
+        userWelcome.innerHTML = `<span>Welcome, ${username}</span>`;
+    });
 
 
 var modal = document.getElementById("edit-profile-modal");
