@@ -8,10 +8,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 
 
-
-<<<<<<< HEAD
-=======
-
 Route::middleware(['web'])->group(function () {
     Route::get('/register', function () {
         return view('register');
@@ -65,4 +61,3 @@ Route::middleware(['web'])->group(function () {
 //     return view('memoirs');
 // });
 
->>>>>>> affcd23ecc5b6f433e5c2ab6d6013b5134615113

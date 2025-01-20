@@ -85,10 +85,9 @@
             </div>
         </div>
 
-
         <div class="memoirs-grid">
-            <div class="memoir-card">
-                <h3 class="memoir-title">Memoir Title</h3>
+            <div class="memoir-card" onclick="openMemoirModal()"></div>
+            <h3 class="memoir-title">Memoir Title</h3>
                 <p class="memoir-date">Date: January 10, 2025</p>
                 <p class="memoir-category">Category: Personal</p>
                 <p class="memoir-mood">Mood: Reflective</p>
@@ -144,7 +143,50 @@
         </div>
 
     </div>
-    <script src="memoirs.js"></script>
+
+    <div id="memoir-modal" class="memoir-modal">
+        <div class="modal-content">
+            <span id="close-modal-memoir-btn" class="close-btn">&times;</span>
+            <h2>Memoir Title</h2>
+            <form>
+
+                <section class="journal-entry">
+                    <h1 type="text" class="entry-title" contenteditable="true">Title</h1>
+
+                    <div class="entry-header">
+                        <span class="entry-date" id="display-date"></span>
+                        <input type="date" id="date-picker" class="hidden" />
+                        <form method="POST" action="{{ route('save.now') }}">
+                            @csrf
+                            <button type="submit" class="save-now">Save Now</button>
+                        </form>
+                    </div>
+                    <!-- Dropdowns for Category and Mood -->
+                    <div class="entry-options">
+                        <label for="category-select">Category:</label>
+                        <select id="category-select">
+                            <option value="personal">Personal</option>
+                            <option value="work">Work</option>
+                            <option value="travel">Travel</option>
+                            <option value="health">Health</option>
+                        </select>
+
+                        <label for="mood-select">Mood:</label>
+                        <select id="mood-select">
+                            <option value="happy">Happy</option>
+                            <option value="sad">Sad</option>
+                            <option value="excited">Excited</option>
+                            <option value="thoughtful">Thoughtful</option>
+                        </select>
+                    </div>
+                    <textarea class="entry-body" placeholder="Your entry here"></textarea>
+
+                <button type="submit" class="save-profile-btn">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+<script src="memoirs.js"></script>
 
 </body>
 

@@ -1,5 +1,3 @@
-
-
 var modal = document.getElementById("edit-profile-modal");
 
   // Get the button that opens the modal
@@ -27,10 +25,10 @@ var modal = document.getElementById("edit-profile-modal");
 
   function toggleNav() {
     const nav = document.querySelector('.nav'); // Select the nav bar
-    const mainContent = document.querySelector('.main-content'); // Select the main content
     nav.classList.toggle('open'); // Toggle 'open' class on the nav
-
-
+    // Ensure no class or style that shifts the main container
+    document.querySelector('.container').style.paddingLeft = '20px'; // Ensure default padding
+    document.querySelector('.main-content').style.transform = 'none'; // Ensure no shifting
 }
 
 const entryTitle = document.querySelector(".entry-title");
@@ -163,3 +161,4 @@ function moveDashboard() {
         }
     }
 }
+

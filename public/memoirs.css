@@ -3,12 +3,16 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(180deg, #ffc021d2, #ffffff); /* Yellow to white gradient */
+    background: linear-gradient(180deg, #ffc021d2, #ffffff);
+    /* Yellow to white gradient */
     color: #333;
     line-height: 1.6;
     display: flex;
     flex-direction: column;
-    height: 100vh; /* Full viewport height */
+    height: 100vh;
+    /* Full viewport height */
+    overflow: hidden;
+    /* Prevent scrolling */
 }
 
 /* Header Section */
@@ -19,7 +23,8 @@ body {
     font-family: 'Pacifico', cursive;
     position: relative;
     z-index: 1;
-    height: 70px; /* Set header height */
+    height: 70px;
+    /* Set header height */
 }
 
 .logo {
@@ -37,7 +42,8 @@ body {
     font-family: 'Pacifico', sans-serif;
     color: #351fc4;
     text-align: center;
-    margin-top: 10px; /* Increased margin-top for more space above */
+    margin-top: 10px;
+    /* Increased margin-top for more space above */
 }
 
 /* Menu Button */
@@ -57,33 +63,40 @@ body {
     display: flex;
     margin-right: 50px;
     flex-direction: column;
-    justify-content: center; /* Center horizontally by default */
-    align-items: center; /* Center vertically */
-    height: calc(100vh - 70px); /* Adjust for header height */
+    justify-content: center;
+    /* Center horizontally by default */
+    align-items: center;
+    /* Center vertically */
+    height: calc(100vh - 70px);
+    /* Adjust for header height */
     transition: padding-left 0.3s ease-in-out;
-    padding-left: 0; /* Default padding when nav is closed */
+    padding-left: 0;
+    /* Default padding when nav is closed */
+    overflow: hidden;
+    /* Prevent scrolling */
 }
 
-.nav.open + .container {
-    padding-left: 250px; /* Add padding to move content when nav is open */
-}
 
 /* Navigation Styling */
 .nav {
     width: 250px;
-    background: linear-gradient(135deg, #351fc4, white); /* Gradient background */
+    background: linear-gradient(135deg, #351fc4, white);
+    /* Gradient background */
     color: white;
     padding: 20px;
     height: 100%;
     box-shadow: 3px 0 6px rgba(0, 0, 0, 0.1);
     position: fixed;
     top: 0;
-    left: -250px; /* Hidden by default */
-    transition: left 0.3s ease-in-out; /* Smooth slide in/out */
+    left: -250px;
+    /* Hidden by default */
+    transition: left 0.3s ease-in-out;
+    /* Smooth slide in/out */
 }
 
 .nav.open {
-    left: 0; /* Show nav bar when the menu is clicked */
+    left: 0;
+    /* Show nav bar when the menu is clicked */
 }
 
 .nav ul {
@@ -98,68 +111,93 @@ body {
 
 
 .nav-item {
-    display: block; /* Stack items vertically */
-    margin: 10px 0; /* Add spacing between items */
-    padding: 10px 0; /* Add padding inside the item */
-    text-align: left; /* Align text to the left */
+    display: block;
+    /* Stack items vertically */
+    margin: 10px 0;
+    /* Add spacing between items */
+    padding: 10px 0;
+    /* Add padding inside the item */
+    text-align: left;
+    /* Align text to the left */
     font-family: 'Pacifico', cursive;
 
     font-size: 20px;
     font-weight: 300;
-    color: #ffffff; /* Text color */
-    text-decoration: none; /* Remove underline */
-    cursor: pointer; /* Add pointer cursor */
-    border: none; /* No border */
-    background: none; /* No background */
-    transition: color 0.3s ease, transform 0.2s ease; /* Smooth hover effect */
+    color: #ffffff;
+    /* Text color */
+    text-decoration: none;
+    /* Remove underline */
+    cursor: pointer;
+    /* Add pointer cursor */
+    border: none;
+    /* No border */
+    background: none;
+    /* No background */
+    transition: color 0.3s ease, transform 0.2s ease;
+    /* Smooth hover effect */
 }
 
 /* Hover effect */
 .nav-item:hover {
-    color: #ffc021d2; /* Change text color on hover */
-    transform: translateX(5px); /* Slightly move the item to the right */
+    color: #ffc021d2;
+    /* Change text color on hover */
+    transform: translateX(5px);
+    /* Slightly move the item to the right */
 }
 
 /* Main Content Area */
 .main-content {
     max-width: 700px;
     width: 100%;
-    transition: transform 0.3s ease-in-out; /* Smooth shifting */
+    transition: none;
+    /* Remove transition to prevent shifting */
+    overflow: hidden;
+    /* Prevent scrolling */
 }
 
-.nav.open + .container .main-content {
-    transform: translateX(250px); /* Shift content to the right */
-}
+/* Remove this block to prevent shifting */
+/* .nav.open + .container .main-content {
+    transform: translateX(250px);
+} */
 
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Fixed in the viewport */
-    z-index: 1; /* Sit on top */
+.modal, .memoir-modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Fixed in the viewport */
+    z-index: 1;
+    /* Sit on top */
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent background */
-    justify-content: center; /* Horizontally center modal */
-    align-items: center; /* Vertically center modal */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Semi-transparent background */
+    justify-content: center;
+    /* Horizontally center modal */
+    align-items: center;
+    /* Vertically center modal */
 }
 
 
 .modal-content {
-    background: linear-gradient(135deg, #ffc021, #ffffff); /* Gradient background */
+    background: linear-gradient(135deg, #ffc021, #ffffff);
+    /* Gradient background */
     margin: 15% auto;
     padding: 20px 30px;
-    border: 1px solid #351fc4; /* Yellow border */
+    border: 1px solid #351fc4;
+    /* Yellow border */
     width: 80%;
     max-width: 500px;
     border-radius: 10px;
-    color: #333; /* Darker text color for better readability */
+    color: #333;
+    /* Darker text color for better readability */
     font-family: Arial, sans-serif;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 
 }
 
-h2{
+h2 {
     color: #351fc4;
     font-family: 'Pacifico', cursive;
     font-weight: 600;
@@ -177,7 +215,9 @@ form {
 label {
     font-size: 16px;
     font-family: 'Pacifico', cursive;
-    font-weight: 100;    color: #351fc4; /* Purple color for labels */
+    font-weight: 100;
+    color: #351fc4;
+    /* Purple color for labels */
     margin-bottom: 5px;
     display: block;
 }
@@ -196,12 +236,14 @@ input {
 
 input:focus {
     outline: none;
-    border-color: #ffc021; /* Yellow border on focus */
+    border-color: #ffc021;
+    /* Yellow border on focus */
     box-shadow: 0 0 5px rgba(255, 192, 33, 0.5);
 }
 
 .save-profile-btn {
-    background: linear-gradient(135deg, #ffc021d2, #351fc4); /* Yellow to white gradient */
+    background: linear-gradient(135deg, #ffc021d2, #351fc4);
+    /* Yellow to white gradient */
     color: #ffffff;
     padding: 10px 20px;
     border: none;
@@ -215,7 +257,8 @@ input:focus {
 }
 
 .save-profile-btn:hover {
-    background: linear-gradient(175deg, #ffc021d2,#351fc4); /* Reverse gradient */
+    background: linear-gradient(175deg, #ffc021d2, #351fc4);
+    /* Reverse gradient */
 }
 
 .save-profile-btn:focus {
@@ -226,7 +269,8 @@ input:focus {
 
 /* Close Button */
 .close-btn {
-    color: #ffc021; /* Yellow close button color */
+    color: #ffc021;
+    /* Yellow close button color */
     float: right;
     font-size: 28px;
     font-weight: bold;
@@ -235,32 +279,48 @@ input:focus {
 
 .close-btn:hover,
 .close-btn:focus {
-    color: #fff; /* White on hover for the close button */
+    color: #fff;
+    /* White on hover for the close button */
     text-decoration: none;
     cursor: pointer;
 }
 
 .memoirs-grid {
-    display: flex;
-    flex-wrap: wrap; /* Ensure the cards wrap to the next line */
-    gap: 20px; /* Space between the cards */
+    display: grid;
+    /* Use grid layout */
+    grid-template-columns: repeat(3, 1fr);
+    /* Two equal-width columns */
+    gap: 20px;
+    /* Space between the cards */
     padding: 20px;
     margin-top: 20px;
-    background-color: #ffffff; /* Optional background for the grid area */
+    background-color: #ffffff;
+    /* Background color for grid */
     border-radius: 10px;
-    justify-content: center; /* Center-align cards in the container */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    /* Optional box-shadow */
+    box-sizing: border-box;
+    /* Includes padding in width calculations */
+    /* height: 300px; */
+    /* Set a fixed height for the grid */
+    overflow-y: auto;
+    /* Allow vertical scrolling inside the grid */
 }
 
 .memoir-card {
-    background: linear-gradient(135deg, #ffc021, #ffffff); /* Gradient for cards */
+    background: linear-gradient(135deg, #ffc021, #ffffff);
+    /* Gradient for cards */
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    width: 250px; /* Fixed width for the cards */
+    width: 250px;
+    /* Fixed width for the cards */
     text-align: center;
     font-family: 'Pacifico', cursive;
     color: #351fc4;
     transition: all 0.3s ease-in-out;
+    margin: 0 auto;
+    /* Center cards horizontally */
 }
 
 .memoir-card:hover {
@@ -290,6 +350,7 @@ input:focus {
     background-color: #ffffff;
     border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    gap: 20px;
 }
 
 .sort-controls,
@@ -326,17 +387,19 @@ select:focus {
     position: fixed;
     top: 20px;
     right: 20px;
-    width: 250px;
-    background: linear-gradient(135deg, #351fc4, #ffffff); /* Yellow gradient to match the theme */
+    width: 250px; /* Fixed width for the dashboard */
+    background: linear-gradient(135deg, #351fc4, #ffffff); /* Gradient background */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     padding: 15px;
     border-radius: 8px;
     display: flex;
-    flex-direction: column;
-    gap: 15px;
-    max-height: 100%; /* Adjusted height */
-    overflow-y: auto; /* Enable scrolling when necessary */
-    font-family: 'Arial', sans-serif; /* Font consistent with theme */
+    flex-direction: column; /* Stack items vertically */
+    gap: 10px;
+
+    height: 4000px; /* Set a fixed height relative to the viewport */
+    max-height: 90vh; /* Ensure it doesn't exceed the viewport height */
+    overflow: hidden; /* Prevent scrolling, force content to fit */
+    font-family: 'Arial', sans-serif; /* Font consistent with the theme */
 }
 
 /* Dashboard Sections */
@@ -345,6 +408,10 @@ select:focus {
     padding: 10px;
     border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+
+    flex-shrink: 1; /* Allow sections to shrink if necessary */
+    overflow: hidden; /* Prevent overflowing content */
+    text-overflow: ellipsis; /* Truncate long text with ellipsis if needed */
 }
 
 /* Section Titles */
@@ -353,6 +420,8 @@ select:focus {
     font-size: 18px;
     color: #351fc4; /* Purple color from the theme */
     margin-bottom: 10px;
+
+    flex-shrink: 0; /* Prevent titles from shrinking */
 }
 
 /* Stats Section */
@@ -360,6 +429,8 @@ select:focus {
     font-size: 14px;
     color: #777;
     margin: 5px 0;
+    word-wrap: break-word; /* Ensure long words break to fit */
+    overflow: hidden; /* Prevent text overflow */
 }
 
 /* Mood Tracker */
@@ -367,6 +438,8 @@ select:focus {
     font-size: 14px;
     color: #351fc4;
     margin: 5px 0;
+    word-wrap: break-word; /* Ensure long words break to fit */
+    overflow: hidden; /* Prevent text overflow */
 }
 
 /* Motivational Quote Section */
@@ -374,23 +447,36 @@ select:focus {
     font-size: 14px;
     color: #777;
     text-align: center;
+    word-wrap: break-word; /* Ensure long words break to fit */
+    max-height: 150px; /* Limit height to prevent overflow */
+    overflow-y: hidden; /* Prevent vertical overflow */
+    overflow-x: hidden; /* Prevent horizontal overflow */
+}
+
+/* Dashboard Section Wrappers */
+.entry-stats,
+.mood-tracker {
+
+    max-height: 500px; /* Set a maximum height */
+    overflow: hidden; /* Hide overflowing content */
 }
 
 .motivational-quotes button {
     background: linear-gradient(135deg, #ffc021, #351fc4); /* Matching gradient */
     color: #fff;
-    padding: 8px 15px;
+    padding: 3px 15px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-family: 'Pacifico', cursive;
     font-size: 14px;
-    margin-top: 10px;
+    position: fixed;
 }
 
 /* Hover effect for motivational quote button */
 .motivational-quotes button:hover {
-    background: linear-gradient(135deg, #351fc4, #ffc021); /* Reverse gradient on hover */
+    background: linear-gradient(135deg, #351fc4, #ffc021);
+    /* Reverse gradient on hover */
 }
 
 @media (max-width: 768px) {
@@ -398,6 +484,7 @@ select:focus {
         position: absolute;
         top: 100%;
         width: 100%;
-        background-color: #f0f0f0;  /* Optional: Add background for better visibility */
+        background-color: #f0f0f0;
+        /* Optional: Add background for better visibility */
     }
 }
