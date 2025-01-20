@@ -12,7 +12,9 @@
 
 <body>
     <header class="header">
-        <div class="logo">Memoir</div>
+        <div class="logo" onclick="window.location='{{ route('home') }}'">
+            Memoir
+        </div>
         <button class="menu-btn" onclick="toggleNav()">☰</button> <!-- Menu button -->
 
     </header>
@@ -21,15 +23,18 @@
         <span>Welcome, jezzeke</span>
     </div>
 
-    <div class="container">
-        <nav class="nav">
-            <ul>
-                <li class="nav-item" id="memoirs">Memoirs</li>
-                <li class="nav-item" id="editprofile">Edit Profile</li>
-                <li class="nav-item" id="logout">Log Out</li>
+    <nav class="nav">
+        <ul>
+            <li class="nav-item" id="newmemoir" onclick="window.location='{{ route('home') }}'">New Memoir</li>
+            <li class="nav-item" id="editprofile">Edit Profile</li>
+            <li class="nav-item" id="logout">Log Out</li>
 
-            </ul>
-        </nav>
+        </ul>
+    </nav>
+
+
+    <div class="container">
+
         <section class="dashboard">
             <!-- Entry Stats -->
             <div class="entry-stats">
@@ -107,7 +112,8 @@
 
                     <div class="form-group">
                         <label for="lastname">Last Name</label>
-                        <input type="text" id="lastname" name="last name" placeholder="Enter your last name" required>
+                        <input type="text" id="lastname" name="last name" placeholder="Enter your last name"
+                            required>
                     </div>
 
                     <div class="form-group">
@@ -122,7 +128,8 @@
 
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                        <input type="password" id="password" name="password" placeholder="Enter your password"
+                            required>
                     </div>
 
                     <div class="form-group">
@@ -136,8 +143,8 @@
             </div>
         </div>
 
-
-        <script src="memoirs.js"></script>
+    </div>
+    <script src="memoirs.js"></script>
 
 </body>
 

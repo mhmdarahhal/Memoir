@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -16,18 +15,20 @@
         <h2>Register</h2>
 
         <form action="/register" method="POST">
+            @csrf
             <div class="form">
                 <label for="firstname">First name</label>
-                <input type="text" id="firstname" name="first name" placeholder="Enter your first name" required>
+                <input type="text" id="firstname" name="firstname" placeholder="Enter your first name" required>
                 <br>
                 <label for="lastname">Last name</label>
-                <input type="text" id="lastname" name="last name" placeholder="Enter your last name" required>
+                <input type="text" id="lastname" name="lastname" placeholder="Enter your last name" required>
                 <br>
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" placeholder="Enter your email" required>
                 <br>
                 <label for="dateofbirth">Date of birth</label>
-                <input type="date" id="dateofbirth" name="dateofbirth" placeholder="Enter your date of birth" required>
+                <input type="date" id="dateofbirth" name="dateofbirth" placeholder="Enter your date of birth"
+                    required>
                 <br>
                 <label for="gender" id="gender">Gender</label>
                 <div class="radio-group">

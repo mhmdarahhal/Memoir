@@ -1,7 +1,4 @@
-function toggleNav() {
-    const nav = document.querySelector('.nav');
-    nav.classList.toggle('open');  // Toggle 'open' class to show/hide nav bar
-}
+
 
 var modal = document.getElementById("edit-profile-modal");
 
@@ -33,11 +30,7 @@ var modal = document.getElementById("edit-profile-modal");
     const mainContent = document.querySelector('.main-content'); // Select the main content
     nav.classList.toggle('open'); // Toggle 'open' class on the nav
 
-    // Check if nav is open or closed and adjust centering
-    if (nav.classList.contains('open')) {
-    } else {
-        mainContent.style.marginLeft = '0'; // Revert to center when nav is closed
-    }
+
 }
 
 const entryTitle = document.querySelector(".entry-title");
@@ -142,3 +135,31 @@ const totalEntries = 50;
 
     document.getElementById('newQuote').addEventListener('click', getRandomQuote);
     getRandomQuote();
+
+
+    window.addEventListener('resize', moveDashboard);
+
+// Initial check on page load
+moveDashboard();
+
+function moveDashboard() {
+    const dashboard = document.querySelector('.dashboard');
+    const navbar = document.querySelector('.nav');
+
+    // If the screen width is smaller than 768px, move the dashboard inside the navbar
+    if (window.innerWidth <= 768) {
+        if (!navbar.contains(dashboard)) {
+            navbar.appendChild(dashboard);  // Move the dashboard to the navbar
+            dashboard.style.position = 'absolute';  // You may want to adjust styles
+            dashboard.style.top = '100%';  // Adjust the position if needed
+        }
+    } else {
+        if (navbar.contains(dashboard)) {
+            // Move the dashboard back to its original position
+            const mainContent = document.querySelector('.main-content'); // Change this selector
+            mainContent.appendChild(dashboard);
+            dashboard.style.position = '';  // Reset styles when moved back
+            dashboard.style.top = '';
+        }
+    }
+}

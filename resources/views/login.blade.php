@@ -16,7 +16,11 @@
         <h2>Login</h2>
 
         <form action="/login" method="POST">
+<<<<<<< HEAD:resources/views/login.php
 
+=======
+            @csrf
+>>>>>>> affcd23ecc5b6f433e5c2ab6d6013b5134615113:resources/views/login.blade.php
             <div class="form">
                 <label for="username">Username</label>
                 <input type="text" id="username" name="username" placeholder="Enter your username" required>
@@ -26,7 +30,7 @@
             </div>
 
             <button type="submit" class="login-btn">Login</button>
-            <p class="register-link">Don't have an account? <a href="register.php">Register here</a></p>
+            <p class="register-link">Don't have an account? <a href="{{ route('register') }}">Register here</a></p>
         </form>
 
     </div>

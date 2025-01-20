@@ -56,12 +56,12 @@ body {
 .container {
     display: flex;
     margin-right: 50px;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center; /* Center horizontally by default */
     align-items: center; /* Center vertically */
     height: calc(100vh - 70px); /* Adjust for header height */
-    transition: padding-left 0.3s ease-in-out;
-    padding-left: 0; /* Default padding when nav is closed */
+    transition: all 0.3s ease-in-out;
+    padding: 20px; /* Default padding when nav is closed */
 }
 
 .nav.open + .container {
@@ -76,7 +76,7 @@ body {
     padding: 20px;
     height: 100%;
     box-shadow: 3px 0 6px rgba(0, 0, 0, 0.1);
-    position: absolute;
+    position: fixed;
     top: 0;
     left: -250px; /* Hidden by default */
     transition: left 0.3s ease-in-out; /* Smooth slide in/out */
@@ -145,7 +145,7 @@ body {
     margin-top: 30px; /* Increased margin-top to push journal entry down */
 
     overflow: hidden;
-    flex-grow: 1; /* Allow journal box to grow */
+    flex: 1; /* Allow journal box to grow */
     min-height: 0; /* Allow it to fit inside available space */
 }
 
@@ -397,7 +397,10 @@ input:focus {
     border-radius: 8px;
     display: flex;
     flex-direction: column;
+    flex: 1;
     gap: 15px;
+    justify-content: center;
+
     max-height: 100%; /* Adjusted height */
     overflow-y: auto; /* Enable scrolling when necessary */
     font-family: 'Arial', sans-serif; /* Font consistent with theme */
@@ -456,3 +459,4 @@ input:focus {
 .motivational-quotes button:hover {
     background: linear-gradient(135deg, #351fc4, #ffc021); /* Reverse gradient on hover */
 }
+
