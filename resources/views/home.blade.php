@@ -18,8 +18,8 @@
         <button class="menu-btn" onclick="toggleNav()">☰</button> <!-- Menu button -->
 
     </header>
-    <div class="user-welcome" data-username="{{ $username }}">
-        <span>Welcome, {{ $username }}</span>
+    <div class="user-welcome">
+        <span>Welcome, {{ session()->get('firstname') }}</span> <!-- Display the firstname -->
     </div>
     <div class="container">
         <nav class="nav">
