@@ -19,8 +19,8 @@
 
     </header>
 
-    <div class="user-welcome" data-username="{{ $username }}">
-        <span>Welcome, {{ $username }}</span>
+    <div class="user-welcome" >
+        <span>Welcome, {{ session('firstname') }}</span>
     </div>
 
     <nav class="nav">

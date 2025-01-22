@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
+
 
 class AuthController extends Controller
 {
@@ -16,8 +18,10 @@ class AuthController extends Controller
 
         if ($user && Hash::check($credentials['password'], $user->password)) {
             Auth::login($user);
-
-            return view('home')->with('username', Auth::user()->username);
+            $username = Auth::user()->username;
+            $firstname = DB::table('user')->where('username', Auth::user()->username)->value('firstname');
+            session(['username' => $username, 'firstname' => $firstname]);
+            return redirect()->intended('home');
         }
 
         return back()->withErrors([

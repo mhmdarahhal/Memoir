@@ -17,8 +17,7 @@ class homeController extends Controller
 
     public function home(Request $request)
     {
-        $username = Auth::user()->username; // Retrieve the username of the logged-in user
-        return view('home', compact('username')); // Pass the username to the "memoirs" view
+        return view('home'); // Pass the username to the "memoirs" view
     }
 
 }
