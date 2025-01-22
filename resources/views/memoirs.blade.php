@@ -7,27 +7,32 @@
     <title>Home Page</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Pacifico&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="memoirs.css">
+        <link rel="stylesheet" href="{{ asset('css/memoirs.css') }}">
 </head>
 
 <body>
     <header class="header">
-        <div class="logo" onclick="window.location='{{ route('home') }}'">
+        <div class="logo" >
             Memoir
         </div>
         <button class="menu-btn" onclick="toggleNav()">☰</button> <!-- Menu button -->
 
     </header>
 
-    <div class="user-welcome">
-        <span>Welcome, jezzeke</span>
+    <div class="user-welcome" data-username="{{ $username }}">
+        <span>Welcome, {{ $username }}</span>
     </div>
 
     <nav class="nav">
         <ul>
             <li class="nav-item" id="newmemoir" onclick="window.location='{{ route('home') }}'">New Memoir</li>
             <li class="nav-item" id="editprofile">Edit Profile</li>
-            <li class="nav-item" id="logout">Log Out</li>
+            <li class="nav-item" id="logout">
+                <form method="POST" action="{{ route('logout') }}" style="display: inline;">
+                    @csrf
+                    <button type="submit" class="nav-item">Log Out</button>
+                </form>
+            </li>
 
         </ul>
     </nav>
@@ -88,6 +93,8 @@
         <div class="memoirs-grid">
             <div class="memoir-card" onclick="openMemoirModal()"></div>
             <h3 class="memoir-title">Memoir Title</h3>
+            <div class="memoir-card" onclick="openMemoirModal(this)">
+                <h3 class="memoir-title">Memoir Title</h3>
                 <p class="memoir-date">Date: January 10, 2025</p>
                 <p class="memoir-category">Category: Personal</p>
                 <p class="memoir-mood">Mood: Reflective</p>
@@ -187,6 +194,7 @@
     </div>
 
 <script src="memoirs.js"></script>
+    <script src="js/memoirs.js"></script>
 
 </body>
 

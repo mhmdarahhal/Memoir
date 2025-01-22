@@ -52,6 +52,10 @@ h1 {
     text-align: center;
 }
 
+.alert-danger{
+    color: #d7374e;
+}
+
 /* Header for the login box */
 h2 {
     margin-bottom: 20px;

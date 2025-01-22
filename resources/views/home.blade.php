@@ -7,28 +7,31 @@
     <title>Home Page</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Pacifico&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="home.css">
+        <link rel="stylesheet" href="{{ asset('css/home.css') }}">
 </head>
 
 <body>
     <header class="header">
-        <div class="logo" onclick="window.location='{{ route('home') }}'">
+        <div class="logo" >
             Memoir
         </div>
         <button class="menu-btn" onclick="toggleNav()">☰</button> <!-- Menu button -->
 
     </header>
-
-    <div class="user-welcome">
-        <span>Welcome, jezzeke</span>
+    <div class="user-welcome" data-username="{{ $username }}">
+        <span>Welcome, {{ $username }}</span>
     </div>
-
     <div class="container">
         <nav class="nav">
             <ul>
                 <li class="nav-item" id="memoirs" onclick="window.location='{{ route('memoirs') }}'">Memoirs</li>
                 <li class="nav-item" id="editprofile">Edit Profile</li>
-                <li class="nav-item" id="logout">Log Out</li>
+                <li class="nav-item" id="logout">
+                    <form method="POST" action="{{ route('logout') }}" style="display: inline;">
+                        @csrf
+                        <button type="submit" class="nav-item">Log Out</button>
+                    </form>
+                </li>
 
             </ul>
         </nav>
@@ -125,7 +128,8 @@
 
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                    <input type="password" id="password" name="password" placeholder="Enter your password"
+                        required>
                 </div>
 
                 <div class="form-group">
@@ -142,7 +146,7 @@
 
 
 
-    <script src="home.js"></script>
+    <script src="js/home.js"></script>
 
 </body>
 
