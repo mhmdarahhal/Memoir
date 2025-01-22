@@ -181,6 +181,7 @@ body {
 
 
 .modal-content {
+    position: relative;
     background: linear-gradient(135deg, #ffc021, #ffffff);
     /* Gradient background */
     margin: 15% auto;
@@ -269,18 +270,19 @@ input:focus {
 
 /* Close Button */
 .close-btn {
-    color: #ffc021;
-    /* Yellow close button color */
-    float: right;
+    color: #ffc021; /* Yellow close button color */
+    position: absolute; /* Position it within the .modal-content */
+    top: 10px; /* Distance from the top of the modal */
+    right: 15px; /* Distance from the right edge of the modal */
     font-size: 28px;
     font-weight: bold;
     cursor: pointer;
+    z-index: 10; /* Ensure it's on top of other content */
 }
 
 .close-btn:hover,
 .close-btn:focus {
-    color: #fff;
-    /* White on hover for the close button */
+    color: #fff; /* White on hover for the close button */
     text-decoration: none;
     cursor: pointer;
 }
@@ -305,6 +307,7 @@ input:focus {
     /* Set a fixed height for the grid */
     overflow-y: auto;
     /* Allow vertical scrolling inside the grid */
+    margin-right: 120px;
 }
 
 .memoir-card {
@@ -487,4 +490,170 @@ select:focus {
         background-color: #f0f0f0;
         /* Optional: Add background for better visibility */
     }
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    gap: 20px; /* Add spacing between children */
+    max-width: 700px; /* Restrict the width */
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+    box-sizing: border-box; /* Include padding in width */
+    overflow: hidden; /* Prevents scrolling on the parent container */
+    padding: 15px; /* Add padding for better spacing */
+    margin: 0 auto; /* Center the container */
+}
+
+.journal-entry {
+    /* flex: 1; */
+    background-color: white;
+    padding: 10px 25px 25px 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow-y: auto;
+    box-sizing: border-box;
+    margin-top: 20px; /* Move the journal entry upwards */
+    height: 500px;
+}
+
+
+
+/* Title of Entry */
+.entry-title {
+    font-size: 28px;
+    font-family: 'Pacifico', cursive;
+    color: #351fc4;
+    text-align: center;
+    letter-spacing: 1px;
+    margin-top: 20px; /* Move the title upwards */
+}
+
+/* Entry Header */
+.entry-header {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+    align-items: center;
+}
+
+  .entry-date {
+    font-size: 16px;
+    font-family: 'Pacifico', cursive;
+    color: #777;
+    cursor: pointer; /* Changes cursor to indicate interactivity */
+  }
+  .entry-date:hover {
+    color: #ffc021d2; /* Optional: Change color on hover */
+  }
+  .hidden {
+    display: none; /* Initially hide the input */
+  }
+
+#date-picker {
+    display: hide; /* Ensures the input starts on a new line */
+    width: 200px; /* Set width for styling */
+    padding: 10px; /* Add padding */
+    font-size: 16px; /* Adjust font size */
+    border: 2px solid #ffc021d2; /* Add border */
+    border-radius: 5px; /* Rounded corners */
+    background-color: #ffffff; /* Light background color */
+}
+
+
+
+/* Entry Textarea Styling */
+.entry-body {
+    width: 100%;
+    height: 150px; /* Increase the height for better visibility */
+    padding: 20px; /* Adjust padding for better space */
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ffffff;
+    font-family: 'Arial', sans-serif;
+    transition: border-color 0.3s ease;
+    resize: none; /* Disable resizing the textarea */
+    box-sizing: border-box; /* Ensure padding doesn't overflow the border */
+    overflow: auto; /* Allow for scrolling inside textarea if content overflows */
+}
+
+/* Adjust placeholder styling */
+.entry-body::placeholder {
+    font-size: 18px; /* Increase the size of the placeholder */
+    color: #bbb; /* Light color for better visibility */
+    line-height: 1.4; /* Adjust line height to make it more spaced */
+}
+
+
+.entry-body:focus {
+    outline: none;
+    border-color: #ffc021;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.6);
+}
+
+.entry-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* margin: 10px 0; */
+}
+
+.entry-options label {
+    font-size: 16px;
+    font-family: 'Pacifico', cursive;
+    font-weight: 100;
+    color: #351fc4;
+    margin-right: 10px;
+}
+
+.entry-options select {
+    font-size: 16px;
+    padding: 5px 10px;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    background-color: #ffffff;
+    color: #351fc4;
+    font-family: 'Arial', sans-serif;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.entry-options select:focus {
+    outline: none;
+    border-color: #ffc021;
+    box-shadow: 0 0 5px rgba(255, 192, 33, 0.5);
+}
+
+.entry-date {
+    font-size: 16px;
+    font-family: 'Pacifico', cursive;
+    color: #777;
+    cursor: pointer; /* Changes cursor to indicate interactivity */
+  }
+  .entry-date:hover {
+    color: #ffc021d2; /* Optional: Change color on hover */
+  }
+  .hidden {
+    display: none; /* Initially hide the input */
+  }
+
+#date-picker {
+    display: hide; /* Ensures the input starts on a new line */
+    width: 200px; /* Set width for styling */
+    padding: 10px; /* Add padding */
+    font-size: 16px; /* Adjust font size */
+    border: 2px solid #ffc021d2; /* Add border */
+    border-radius: 5px; /* Rounded corners */
+    background-color: #ffffff; /* Light background color */
+}
+
+.modal-content h2 {
+    text-align: center; /* Centers the text horizontally */
+    margin-top: 10px; /* Optional: Adjust top margin for spacing */
+    font-size: 24px; /* Adjust size if needed */
+    font-family: 'Arial', sans-serif; /* Optional: Define font */
+    color: #351fc4; /* Optional: Match your theme */
+    margin-bottom: 10px;
 }

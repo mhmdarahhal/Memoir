@@ -163,10 +163,7 @@
                     <div class="entry-header">
                         <span class="entry-date" id="display-date"></span>
                         <input type="date" id="date-picker" class="hidden" />
-                        <form method="POST" action="{{ route('save.now') }}">
-                            @csrf
-                            <button type="submit" class="save-now">Save Now</button>
-                        </form>
+
                     </div>
                     <!-- Dropdowns for Category and Mood -->
                     <div class="entry-options">
@@ -194,7 +191,6 @@
     </div>
 
 <script src="memoirs.js"></script>
-    <script src="js/memoirs.js"></script>
 
 </body>
 

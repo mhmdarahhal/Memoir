@@ -215,7 +215,6 @@ body {
 .entry-body::placeholder {
     font-size: 18px; /* Increase the size of the placeholder */
     color: #bbb; /* Light color for better visibility */
-    padding-top: 10px; /* Keep the placeholder a bit higher */
     line-height: 1.4; /* Adjust line height to make it more spaced */
 }
 

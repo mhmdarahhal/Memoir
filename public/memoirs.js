@@ -1,5 +1,3 @@
-
-
 var modal = document.getElementById("edit-profile-modal");
 
   // Get the button that opens the modal
@@ -67,7 +65,13 @@ memoirs.forEach(memoir => {
         <p class="memoir-mood">Mood: ${memoir.mood}</p>
     `;
     memoirsGrid.appendChild(card);
+    card.addEventListener('click', function() {
+        openMemoirModal(this);
+    });
 });
+
+
+
 
 
 const sortSelect = document.getElementById('sort');
@@ -87,6 +91,7 @@ function displayMemoirs(filteredMemoirs) {
         `;
         memoirsGrid.appendChild(card);
     });
+    attachCardEventListeners();
 }
 
 // Function to sort memoirs
@@ -180,43 +185,43 @@ function moveDashboard() {
     }
 }
 
-const displayDate = document.getElementById("display-date");
-  const datePicker = document.getElementById("date-picker");
+// Get all memoir cards
+var cardElements = document.querySelectorAll(".memoir-card"); // Select all cards
+var memoirModal = document.getElementById("memoir-modal"); // The memoir modal
+var closeMemoirBtn = document.getElementById("close-modal-memoir-btn"); // Close button in memoir modal
 
-  if (!displayDate) {
-    console.error("Element with ID 'display-date' not found.");
+// Check if all required elements exist
+if (!cardElements || cardElements.length === 0 || !memoirModal || !closeMemoirBtn) {
+    console.error("One or more required elements are missing. Check your HTML IDs and classes.");
+} else {
+    // Attach a click event to each card
+    cardElements.forEach(function (card) {
+        card.addEventListener("click", function () {
+            console.log("Card clicked:", card);
+            memoirModal.style.display = "flex"; // Show the modal
+        });
+    });
 }
 
-  // Get today's date
-  const today = new Date();
+function attachCardEventListeners() {
+    const cardElements = document.querySelectorAll('.memoir-card');
+    cardElements.forEach(function (card) {
+        card.addEventListener("click", function () {
+            console.log("Card clicked:", card);
+            memoirModal.style.display = "flex"; // Show the modal
+        });
+    });
+}
 
-  // Format today's date for display in a human-readable format
-  const options = { weekday: "short", year: "numeric", month: "numeric", day: "numeric" };
-  const formattedDate = today.toLocaleDateString(undefined, options);
+closeMemoirBtn.onclick = function () {
+    console.log("Close button clicked, closing memoir modal.");
+    memoirModal.style.display = "none"; // Hide the modal
+};
 
-  // Set the `displayDate` to today's date
-  displayDate.textContent = `📅 ${formattedDate}`;
-
-  // Format today's date for the date input (yyyy-mm-dd format)
-  const isoDate = today.toISOString().split("T")[0]; // Extract yyyy-mm-dd format
-
-  // Set the default value of the date picker to today's date
-  datePicker.value = isoDate;
-
-
-
-  displayDate.addEventListener("click", () => {
-    datePicker.classList.remove("hidden");
-    datePicker.focus();
-  });
-
-  datePicker.addEventListener("change", () => {
-    const selectedDate = new Date(datePicker.value);
-    const options = { weekday: "short", year: "numeric", month: "numeric", day: "numeric" };
-    displayDate.textContent = `📅 ${selectedDate.toLocaleDateString(undefined, options)}`;
-    datePicker.classList.add("hidden");
-  });
-
-  datePicker.addEventListener("blur", () => {
-    datePicker.classList.add("hidden");
-  });
+// Close the memoir modal if the user clicks outside it
+window.onclick = function (event) {
+    if (event.target === memoirModal) {
+        console.log("Clicked outside memoir modal, closing it.");
+        memoirModal.style.display = "none";
+    }
+};
