@@ -1,12 +1,3 @@
-    document.addEventListener("DOMContentLoaded", function () {
-        // Get the element and the username
-        const userWelcome = document.querySelector('.user-welcome');
-        const username = userWelcome.dataset.username;
-
-        // Update the span text
-        userWelcome.innerHTML = `<span>Welcome, ${username}</span>`;
-    });
-
 
 var modal = document.getElementById("edit-profile-modal");
 
@@ -64,6 +55,7 @@ const displayDate = document.getElementById("display-date");
 
   // Get today's date
   const today = new Date();
+  const selectedDate=today;
 
   // Format today's date for display in a human-readable format
   const options = { weekday: "short", year: "numeric", month: "numeric", day: "numeric" };
@@ -86,9 +78,10 @@ const displayDate = document.getElementById("display-date");
   });
 
   datePicker.addEventListener("change", () => {
-    const selectedDate = new Date(datePicker.value);
+    const chosenDate = new Date(datePicker.value);
     const options = { weekday: "short", year: "numeric", month: "numeric", day: "numeric" };
-    displayDate.textContent = `📅 ${selectedDate.toLocaleDateString(undefined, options)}`;
+    displayDate.textContent = `📅 ${chosenDate.toLocaleDateString(undefined, options)}`;
+    console.log(chosenDate);
     datePicker.classList.add("hidden");
   });
 
@@ -102,13 +95,18 @@ saveButton.addEventListener("click", () => {
     const body = document.querySelector(".entry-body").value.trim();
     const category = document.getElementById("category-select").value;
     const mood = document.getElementById("mood-select").value;
-
+    const date = selectedDate ? selectedDate.toISOString().split('T')[0] : null; // Format the date as YYYY-MM-DD
     if (title && body) {
         console.log("Saving Memoir Entry...");
-        console.log("Title:", title);
-        console.log("Body:", body);
-        console.log("Category:", category);
-        console.log("Mood:", mood);
+        console.log("Title:",typeof title, title);
+        console.log("Body:",typeof body, body);
+        console.log("Category:",typeof category, category);
+        console.log("Mood:",typeof mood, mood);
+        console.log("Date:",typeof date, date); // Log the date as a Date object
+
+        document.querySelector("#title").value = title;
+        document.querySelector("#date").value = date;
+
 
         alert("Your memoir has been saved!");
     } else {

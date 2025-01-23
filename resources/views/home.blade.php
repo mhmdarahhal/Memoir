@@ -7,19 +7,21 @@
     <title>Home Page</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Pacifico&display=swap"
         rel="stylesheet">
-        <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
 </head>
 
 <body>
     <header class="header">
-        <div class="logo" >
+        <div class="logo">
             Memoir
         </div>
         <button class="menu-btn" onclick="toggleNav()">☰</button> <!-- Menu button -->
 
     </header>
     <div class="user-welcome">
-        <span>Welcome, {{ session()->get('firstname') }}</span> <!-- Display the firstname -->
+        <div class="user-welcome">
+            <span>Welcome, {{ session('firstname') }}</span>
+        </div>
     </div>
     <div class="container">
         <nav class="nav">
@@ -66,35 +68,41 @@
             </section>
 
             <section class="journal-entry">
-                <h1 type="text" class="entry-title" contenteditable="true">Title</h1>
+                <form method="POST" action="{{ route('save.now') }}">
+                    @csrf
+                    <h1 type="text" class="entry-title" contenteditable="true" required>Title</h1>
+                    <input type="hidden" id="title" name="title">
 
-                <div class="entry-header">
-                    <span class="entry-date" id="display-date"></span>
-                    <input type="date" id="date-picker" class="hidden" />
-                    <form method="POST" action="{{ route('save.now') }}">
-                        @csrf
+                    <div class="entry-header">
+                        <span class="entry-date" id="display-date"></span>
+                        <input type="hidden" id="date" name="date">
+
+                        <input type="date" id="date-picker" class="hidden" />
+
+
                         <button type="submit" class="save-now">Save Now</button>
-                    </form>
-                </div>
-                <!-- Dropdowns for Category and Mood -->
-                <div class="entry-options">
-                    <label for="category-select">Category:</label>
-                    <select id="category-select">
-                        <option value="personal">Personal</option>
-                        <option value="work">Work</option>
-                        <option value="travel">Travel</option>
-                        <option value="health">Health</option>
-                    </select>
 
-                    <label for="mood-select">Mood:</label>
-                    <select id="mood-select">
-                        <option value="happy">Happy</option>
-                        <option value="sad">Sad</option>
-                        <option value="excited">Excited</option>
-                        <option value="thoughtful">Thoughtful</option>
-                    </select>
-                </div>
-                <textarea class="entry-body" placeholder="Your entry here"></textarea>
+                    </div>
+                    <!-- Dropdowns for Category and Mood -->
+                    <div class="entry-options">
+                        <label for="category-select">Category:</label>
+                        <select id="category-select" name='category' required>
+                            <option value="personal">Personal</option>
+                            <option value="work">Work</option>
+                            <option value="travel">Travel</option>
+                            <option value="health">Health</option>
+                        </select>
+
+                        <label for="mood-select">Mood:</label>
+                        <select id="mood-select" name='mood' required>
+                            <option value="happy">Happy</option>
+                            <option value="sad">Sad</option>
+                            <option value="excited">Excited</option>
+                            <option value="thoughtful">Thoughtful</option>
+                        </select>
+                    </div>
+                    <textarea class="entry-body" placeholder="Your entry here" name='body' required></textarea>
+                </form>
             </section>
         </main>
     </div>
@@ -146,8 +154,7 @@
 
 
 
-    <script src="js/home.js"></script>
-
+    <script src={{ asset('js/home.js') }}></script>
 </body>
 
 </html>

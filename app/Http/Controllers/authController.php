@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 
-
 class AuthController extends Controller
 {
     public function login(Request $request)
@@ -34,7 +33,7 @@ class AuthController extends Controller
         Auth::logout();
         $request->session()->flush();  // Clear all session data
         $request->session()->invalidate();
-        $request->session()->regenerateToken();
+        $request->session()->regenerate();
 
         return redirect()->route('login');
 

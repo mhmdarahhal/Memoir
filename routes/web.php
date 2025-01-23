@@ -24,9 +24,7 @@ Route::middleware(['web'])->group(function () {
     })->name('login');
     Route::post('/login', [authController::class, 'login']);
 
-    Route::get('/home', function () {
-        return view("/home");
-    });
+
 
     Route::post('/save-now', [homeController::class, 'saveNow'])->name('save.now');
 
@@ -39,5 +37,7 @@ Route::middleware(['web'])->group(function () {
     Route::post('/logout', [authController::class, 'logout'])->name('logout');
 
     Route::get('/check-username', [RegisterController::class, 'checkUsername']);
+
+
 });
 
