@@ -8,8 +8,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 
 
-
-
 Route::middleware(['web'])->group(function () {
     Route::get('/register', function () {
         return view('register');
