@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Illuminate\Http\Request;
 use App\Rules\Password;
 use App\Models\User;
@@ -34,6 +35,27 @@ class registerController extends Controller
         ]);
         return view('login');
     }
+
+
+    public function editProfile(Request $request)
+    {
+        $editprofileform = $request;
+        if ($request->get('firstname') != '') {
+            $editprofileform = $request->validate([
+                'firstname' => ['required', 'max:25'],
+            ]);
+            Auth::user()->update(['firstname' => $request->get('firstname')]);
+            session()->put('firstname', Auth::user()->firstname);
+            session()->put('user', Auth::user());
+
+        }
+
+
+
+        return redirect()->route('home');
+    }
+
+
     public function checkUsername(Request $request)
     {
         $username = $request->query('username');

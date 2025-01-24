@@ -1,7 +1,12 @@
 
 var modal = document.getElementById("edit-profile-modal");
+var firstName = document.getElementById("firstname");
+var lastName = document.getElementById("lastname");
+var email = document.getElementById("email");
+var password = document.getElementById("password");
+var username = document.getElementById("username");
 
-  // Get the button that opens the modal
+// Get the button that opens the modal
   var settingsBtn = document.getElementById("editprofile");
 
   // Get the <span> element that closes the modal
@@ -10,6 +15,13 @@ var modal = document.getElementById("edit-profile-modal");
   // When the user clicks the button, open the modal
   settingsBtn.onclick = function() {
     modal.style.display = "flex";
+    document.getElementById("oldfirstname").innerText += " "+user.firstname;
+    document.getElementById("oldlastname").innerText += " "+user.lastname;
+    document.getElementById("oldemail").innerText += " "+user.email;
+    document.getElementById("oldusername").innerText += " "+user.username;
+
+
+
   }
 
   // When the user clicks on <span> (x), close the modal

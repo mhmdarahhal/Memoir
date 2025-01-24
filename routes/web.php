@@ -31,6 +31,7 @@ Route::middleware(['web'])->group(function () {
 
     Route::get('/memoirs', [MemoirsController::class, 'memoirs'])->name(name: 'memoirs')->middleware('auth');
 
+    Route::patch('/edit-profile', [registerController::class, 'editProfile'])->name('update.profile');
 
     Route::post('/logout', [authController::class, 'logout'])->name('logout');
 

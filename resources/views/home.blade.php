@@ -112,38 +112,38 @@
         <div class="modal-content">
             <span id="close-modal-btn" class="close-btn">&times;</span>
             <h2>Edit Profile</h2>
-            <form>
-
+            <form action="{{ route('update.profile') }}" method="post">
+                @csrf
+                @method('PATCH')
                 <div class="form-group">
-                    <label for="firstname">First Name</label>
-                    <input type="text" id="firstname" name="first name" placeholder="Enter your first name" required>
+                    <label for="firstname" id='oldfirstname'>Old First Name: </label>
+                    <input type="text" id="firstname" name="firstname" placeholder="Enter the new value">
                 </div>
 
                 <div class="form-group">
-                    <label for="lastname">Last Name</label>
-                    <input type="text" id="lastname" name="last name" placeholder="Enter your last name" required>
+                    <label for="lastname"id='oldlastname'>Old Last Name: </label>
+                    <input type="text" id="lastname" name="lastname" placeholder="Enter the new value">
                 </div>
 
                 <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    <label for="email"id='oldemail'>Old Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Enter the new value">
                 </div>
 
                 <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username" placeholder="Enter your username" required>
+                    <label for="username"id='oldusername'>Old Username:</label>
+                    <input type="text" id="username" name="username" placeholder="Enter the new value">
                 </div>
 
                 <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" placeholder="Enter your password"
-                        required>
+                    <label for="password">New Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter the new password">
                 </div>
 
                 <div class="form-group">
-                    <label for="confirm-password">Confirm Password</label>
+                    <label for="confirm-password">Confirm New Password</label>
                     <input type="password" id="confirm-password" name="confirm-password"
-                        placeholder="Confirm your password" required>
+                        placeholder="Confirm the new password">
                 </div>
 
                 <button type="submit" class="save-profile-btn">Save Changes</button>
@@ -152,7 +152,9 @@
     </div>
 
 
-
+    <script>
+        const user = @json(session('user'));
+    </script>
 
     <script src={{ asset('js/home.js') }}></script>
 </body>
