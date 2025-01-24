@@ -39,7 +39,6 @@
 
 
     <div class="container">
-
         <section class="dashboard">
             <!-- Entry Stats -->
             <div class="entry-stats">
@@ -91,13 +90,13 @@
         </div>
 
         <div class="memoirs-grid">
-            <div class="memoir-card" onclick="openMemoirModal()"></div>
-            <h3 class="memoir-title">Memoir Title</h3>
+
             <div class="memoir-card" onclick="openMemoirModal(this)">
-                <h3 class="memoir-title">Memoir Title</h3>
-                <p class="memoir-date">Date: January 10, 2025</p>
-                <p class="memoir-category">Category: Personal</p>
-                <p class="memoir-mood">Mood: Reflective</p>
+                {{-- <h3 class="memoir-title">Title: </h3>
+                <p class="memoir-date">Date: </p>
+                <p class="memoir-category">Category: </p>
+                <p class="memoir-mood">Mood: </p>
+                <p class="memoir-body" type = "hidden">body</p> --}}
             </div>
             <!-- Add more cards here -->
         </div>
@@ -154,18 +153,16 @@
     <div id="memoir-modal" class="memoir-modal">
         <div class="modal-content">
             <span id="close-modal-memoir-btn" class="close-btn">&times;</span>
-            <h2>Memoir Title</h2>
+            <h2>Edit Your Memoir</h2>
             <form>
 
                 <section class="journal-entry">
-                    <h1 type="text" class="entry-title" contenteditable="true">Title</h1>
+                    <h1 type="text" class="entry-title" contenteditable="true" id = "memoir-title">Title</h1>
 
                     <div class="entry-header">
-                        <span class="entry-date" id="display-date"></span>
+                        <span class="datedisplay" id="display-date"></span>
                         <input type="date" id="date-picker" class="hidden" />
-
                     </div>
-                    <!-- Dropdowns for Category and Mood -->
                     <div class="entry-options">
                         <label for="category-select">Category:</label>
                         <select id="category-select">
@@ -183,14 +180,20 @@
                             <option value="thoughtful">Thoughtful</option>
                         </select>
                     </div>
-                    <textarea class="entry-body" placeholder="Your entry here"></textarea>
+                    <textarea class="entry-body" placeholder="Your entry here" id="memoir-body"></textarea>
 
                 <button type="submit" class="save-profile-btn">Save Changes</button>
             </form>
         </div>
     </div>
 
-<script src="memoirs.js"></script>
+    <script>
+        // Embed the session data into a JavaScript variable
+        window.memoirs = @json(session('memoirs', []));
+        console.log(window.memoirs);
+    </script>
+
+    <script src="{{ asset('js/memoirs.js') }}"></script>
 
 </body>
 

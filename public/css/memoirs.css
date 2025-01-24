@@ -540,16 +540,16 @@ select:focus {
     align-items: center;
 }
 
-  .entry-date {
+  #display-date {
     font-size: 16px;
     font-family: 'Pacifico', cursive;
     color: #777;
     cursor: pointer; /* Changes cursor to indicate interactivity */
   }
-  .entry-date:hover {
+  #display-date:hover {
     color: #ffc021d2; /* Optional: Change color on hover */
   }
-  .hidden {
+  .hidden, .memoir-body-hidden {
     display: none; /* Initially hide the input */
   }
 

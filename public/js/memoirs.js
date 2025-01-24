@@ -1,6 +1,6 @@
 
 
-var modal = document.getElementById("edit-profile-modal");
+  var modal = document.getElementById("edit-profile-modal");
 
   // Get the button that opens the modal
   var settingsBtn = document.getElementById("editprofile");
@@ -33,60 +33,57 @@ var modal = document.getElementById("edit-profile-modal");
 
 }
 
-const memoirs = [
-    {
-        title: "A Walk in the Park",
-        date: "January 1, 2025",
-        category: "Nature",
-        mood: "Relaxed"
-    },
-    {
-        title: "My First Job",
-        date: "December 15, 2024",
-        category: "Career",
-        mood: "Excited"
-    },
-    {
-        title: "A Rainy Evening",
-        date: "November 20, 2024",
-        category: "Reflection",
-        mood: "Peaceful"
-    },
-    // Add more memoirs as needed
-];
 
-const memoirsGrid = document.querySelector('.memoirs-grid');
-
-memoirs.forEach(memoir => {
-    const card = document.createElement('div');
-    card.classList.add('memoir-card');
-    card.innerHTML = `
-        <h3 class="memoir-title">${memoir.title}</h3>
-        <p class="memoir-date">Date: ${memoir.date}</p>
-        <p class="memoir-category">Category: ${memoir.category}</p>
-        <p class="memoir-mood">Mood: ${memoir.mood}</p>
-    `;
-    memoirsGrid.appendChild(card);
+document.addEventListener('DOMContentLoaded', () => {
+    displayMemoirs(memoirs); // Use the memoirs variable from the Blade template
 });
-
 
 const sortSelect = document.getElementById('sort');
 const filterCategorySelect = document.getElementById('filter-category');
 
 // Function to display memoirs
-function displayMemoirs(filteredMemoirs) {
+function displayMemoirs(memoirs) {
+    const memoirsGrid = document.querySelector('.memoirs-grid');
     memoirsGrid.innerHTML = ''; // Clear the grid
-    filteredMemoirs.forEach(memoir => {
+    memoirs.forEach(memoir => {
         const card = document.createElement('div');
         card.classList.add('memoir-card');
         card.innerHTML = `
-            <h3 class="memoir-title">${memoir.title}</h3>
-            <p class="memoir-date">Date: ${new Date(memoir.date).toDateString()}</p>
-            <p class="memoir-category">Category: ${memoir.category}</p>
-            <p class="memoir-mood">Mood: ${memoir.mood}</p>
+        <h3 class="memoir-title">${memoir.title}</h3>
+        <p class="memoir-date">Date: ${new Date(memoir.date).toDateString()}</p>
+        <p class="memoir-category">Category: ${memoir.category}</p>
+        <p class="memoir-mood">Mood: ${memoir.mood}</p>
+        <p class="memoir-body-hidden">${memoir.body}</p>
         `;
+        card.addEventListener('click', () => openMemoirModal(memoir));
+
         memoirsGrid.appendChild(card);
     });
+}
+
+function openMemoirModal(memoir) {
+    const modal = document.getElementById('memoir-modal');
+    console.log(modal);
+    document.getElementById('memoir-title').innerText = memoir.title;
+    document.getElementById('display-date').innerText = new Date(memoir.date).toDateString();
+    document.getElementById('category-select').innerText = memoir.category;
+    document.getElementById('mood-select').innerText = memoir.mood;
+    document.getElementById('memoir-body').innerText = memoir.body;
+
+    modal.style.display = 'block'; // Show the modal
+}
+
+// Example of how to close the modal
+document.getElementById('close-modal-memoir-btn').onclick = function() {
+    document.getElementById('memoir-modal').style.display = 'none';
+}
+
+// Example of how to close the modal when clicking outside of it
+window.onclick = function(event) {
+    const modal = document.getElementById('memoir-modal');
+    if (event.target == modal) {
+        modal.style.display = 'none';
+    }
 }
 
 // Function to sort memoirs
@@ -180,12 +177,8 @@ function moveDashboard() {
     }
 }
 
-const displayDate = document.getElementById("display-date");
+const displayDate = document.querySelector("datedisplay");
   const datePicker = document.getElementById("date-picker");
-
-  if (!displayDate) {
-    console.error("Element with ID 'display-date' not found.");
-}
 
   // Get today's date
   const today = new Date();
