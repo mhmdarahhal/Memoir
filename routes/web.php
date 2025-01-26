@@ -37,6 +37,9 @@ Route::middleware(['web'])->group(function () {
 
     Route::get('/check-username', [RegisterController::class, 'checkUsername']);
 
+    Route::patch('/edit-memoir', [memoirsController::class, 'editMemoir'])->name('update.memoir');
+
+
 
 });
 

@@ -1,6 +1,3 @@
-
-
-
 var editprofilemodal = document.getElementById("edit-profile-modal");
 var firstName = document.getElementById("firstname");
 var lastName = document.getElementById("lastname");
@@ -82,6 +79,7 @@ function displayMemoirs(memoirs) {
     memoirsGrid.innerHTML = ''; // Clear the grid
     memoirs.forEach(memoir => {
         const card = document.createElement('div');
+
         card.classList.add('memoir-card');
         card.innerHTML = `
         <h3 class="memoir-title">${memoir.title}</h3>
@@ -91,6 +89,7 @@ function displayMemoirs(memoirs) {
         <p class="memoir-body-hidden">${memoir.body}</p>
         `;
         card.addEventListener('click', () => openMemoirModal(memoir));
+        document.querySelector("#memoirid").value = memoir.memoirid;
 
         memoirsGrid.appendChild(card);
     });
@@ -216,39 +215,96 @@ function moveDashboard() {
     }
 }
 
-// const displayDate = document.querySelector("datedisplay");
-//   const datePicker = document.getElementById("date-picker");
-
-//   // Get today's date
-//   const today = new Date();
-
-//   // Format today's date for display in a human-readable format
-//   const options = { weekday: "short", year: "numeric", month: "numeric", day: "numeric" };
-//   const formattedDate = today.toLocaleDateString(undefined, options);
-
-//   // Set the `displayDate` to today's date
-//   displayDate.textContent = `📅 ${formattedDate}`;
-
-//   // Format today's date for the date input (yyyy-mm-dd format)
-//   const isoDate = today.toISOString().split("T")[0]; // Extract yyyy-mm-dd format
-
-//   // Set the default value of the date picker to today's date
-//   datePicker.value = isoDate;
+document.addEventListener('DOMContentLoaded', function() {
 
 
+    // Populate category and mood options if needed
+    const categories = ['Personal', 'Work', 'Travel', 'Health'];
+    const moods = ['Happy', 'Sad', 'Excited', 'Thoughtful'];
 
-//   displayDate.addEventListener("click", () => {
-//     datePicker.classList.remove("hidden");
-//     datePicker.focus();
-//   });
+    const categorySelect = document.getElementById('category-select');
+    const moodSelect = document.getElementById('mood-select');
 
-//   datePicker.addEventListener("change", () => {
-//     const selectedDate = new Date(datePicker.value);
-//     const options = { weekday: "short", year: "numeric", month: "numeric", day: "numeric" };
-//     displayDate.textContent = `📅 ${selectedDate.toLocaleDateString(undefined, options)}`;
-//     datePicker.classList.add("hidden");
-//   });
+    categories.forEach(category => {
+        const option = document.createElement('option');
+        option.value = category.toLowerCase();
+        option.textContent = category;
+        categorySelect.appendChild(option);
+    });
 
-//   datePicker.addEventListener("blur", () => {
-//     datePicker.classList.add("hidden");
-//   });
+    moods.forEach(mood => {
+        const option = document.createElement('option');
+        option.value = mood.toLowerCase();
+        option.textContent = mood;
+        moodSelect.appendChild(option);
+    });
+});
+
+
+
+const displayDate = document.getElementById("display-date");
+  const datePicker = document.getElementById("date-picker");
+
+  // Get today's date
+  const today = new Date();
+  var selectedDate=today;
+
+  // Format today's date for display in a human-readable format
+  const options = { weekday: "short", year: "numeric", month: "numeric", day: "numeric" };
+  const formattedDate = today.toLocaleDateString(undefined, options);
+
+  // Set the `displayDate` to today's date
+  displayDate.textContent = `📅 ${formattedDate}`;
+
+  // Format today's date for the date input (yyyy-mm-dd format)
+  const isoDate = today.toISOString().split("T")[0]; // Extract yyyy-mm-dd format
+
+  // Set the default value of the date picker to today's date
+  datePicker.value = isoDate;
+
+
+
+  displayDate.addEventListener("click", () => {
+    datePicker.classList.remove("hidden");
+    datePicker.focus();
+  });
+
+  datePicker.addEventListener("change", () => {
+    const chosenDate = new Date(datePicker.value);
+    const options = { weekday: "short", year: "numeric", month: "numeric", day: "numeric" };
+    displayDate.textContent = `${chosenDate.toDateString(undefined, options)}`;
+    console.log(chosenDate);
+    selectedDate=chosenDate;
+    datePicker.classList.add("hidden");
+  });
+
+  datePicker.addEventListener("blur", () => {
+    datePicker.classList.add("hidden");
+  });
+
+    const saveButton = document.querySelector(".save-memoir-btn");
+    saveButton.addEventListener("click", () => {
+    const title = document.querySelector(".entry-title").textContent.trim();
+    const body = document.querySelector(".entry-body").value.trim();
+    const category = document.getElementById("category-select").value;
+    const mood = document.getElementById("mood-select").value;
+    const date = selectedDate ? selectedDate.toISOString().split('T')[0] : null; // Format the date as YYYY-MM-DD
+    if (title && body) {
+        console.log("Saving Memoir Entry...");
+        console.log("Title:",typeof title, title);
+        console.log("Body:",typeof body, body);
+        console.log("Category:",typeof category, category);
+        console.log("Mood:",typeof mood, mood);
+        console.log("Date:",typeof date, date); // Log the date as a Date object
+
+        document.querySelector("#title").value = title;
+        document.querySelector("#date").value = date;
+
+
+        alert("Your memoir has been saved!");
+    } else {
+        alert("Please fill in the title and entry text.");
+    }
+});
+
+

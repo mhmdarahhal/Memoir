@@ -242,7 +242,7 @@ input:focus {
     box-shadow: 0 0 5px rgba(255, 192, 33, 0.5);
 }
 
-.save-profile-btn {
+.save-profile-btn, .save-memoir-btn {
     background: linear-gradient(135deg, #ffc021d2, #351fc4);
     /* Yellow to white gradient */
     color: #ffffff;
@@ -257,12 +257,12 @@ input:focus {
     transition: all 0.3s ease-in-out;
 }
 
-.save-profile-btn:hover {
+.save-profile-btn:hover, .save-memoir-btn:hover {
     background: linear-gradient(175deg, #ffc021d2, #351fc4);
     /* Reverse gradient */
 }
 
-.save-profile-btn:focus {
+.save-profile-btn:focus ,.save-memoir-btn:focus {
     outline: none;
     box-shadow: 0 0 6px rgba(255, 192, 33, 0.8);
 }
@@ -270,8 +270,8 @@ input:focus {
 
 /* Close Button */
 .close-btn {
-    color: #ffc021; /* Yellow close button color */
-    float: right;
+    color: #351fc4; /* Yellow close button color */
+    float: left;
     font-size: 28px;
     font-weight: bold;
     cursor: pointer;

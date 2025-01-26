@@ -161,19 +161,25 @@
         <div class="modal-content">
             <span id="close-modal-memoir-btn" class="close-btn">&times;</span>
             <h2>Edit Your Memoir</h2>
-            <form>
-
+            <form action="{{ route('update.memoir') }}" method="post">
+                @csrf
+                @method('PATCH')
                 <section class="journal-entry">
-                    <h1 type="text" class="entry-title" contenteditable="true" id="memoir-title">Title</h1>
+                    <h1 type="text" class="entry-title" contenteditable="true" id="memoir-title">
+                        Title</h1>
+                    <input type="hidden" id="title" name="title">
+                    <input type="hidden" id="memoirid" name="memoirid">
+
 
                     <div class="entry-header">
                         <span class="datedisplay" id="display-date"
                             onclick="document.getElementById('date-picker').click();">📅 Select Date</span>
                         <input type="date" id="date-picker" class="hidden" />
+                        <input type="hidden" id="date" name="date">
                     </div>
                     <div class="entry-options">
                         <label for="category-select">Category:</label>
-                        <select id="category-select">
+                        <select id="category-select" name="category">
                             <option value="personal">Personal</option>
                             <option value="work">Work</option>
                             <option value="travel">Travel</option>
@@ -181,16 +187,16 @@
                         </select>
 
                         <label for="mood-select">Mood:</label>
-                        <select id="mood-select">
+                        <select id="mood-select" name="mood">
                             <option value="happy">Happy</option>
                             <option value="sad">Sad</option>
                             <option value="excited">Excited</option>
                             <option value="thoughtful">Thoughtful</option>
                         </select>
                     </div>
-                    <textarea class="entry-body" placeholder="Your entry here" id="memoir-body"></textarea>
+                    <textarea class="entry-body" placeholder="Your entry here" name="body" id="memoir-body"></textarea>
 
-                    <button type="submit" class="save-profile-btn">Save Changes</button>
+                    <button type="submit" class="save-memoir-btn">Save Changes</button>
             </form>
         </div>
     </div>
