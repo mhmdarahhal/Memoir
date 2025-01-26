@@ -146,7 +146,6 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between; /* Distributes content evenly */
-    overflow-y: auto; /* Allows scrolling if content exceeds available space */
     box-sizing: border-box; /* Include padding in width/height */
 }
 
@@ -198,7 +197,7 @@ body {
 /* Entry Textarea Styling */
 .entry-body {
     width: 100%;
-    height: 250px; /* Increase the height for better visibility */
+    height: 300px; /* Increase the height for better visibility */
     margin-top: 20px;
     padding: 20px; /* Adjust padding for better space */
     font-size: 16px;
