@@ -389,10 +389,12 @@ input:focus {
 
 /* Dashboard container (adjusted for the theme) */
 .dashboard {
-    position: fixed;
+    position: fixed; /* Change to fixed positioning */
     top: 20px;
     right: 20px;
     width: 250px; /* Fixed width for the dashboard */
+    height: 100vh; /* Take the full viewport height */
+
     background: linear-gradient(135deg, #351fc4, #ffffff); /* Gradient background */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     padding: 15px;
@@ -400,11 +402,10 @@ input:focus {
     display: flex;
     flex-direction: column; /* Stack items vertically */
     gap: 10px;
-
-    height: 4000px; /* Set a fixed height relative to the viewport */
     max-height: 90vh; /* Ensure it doesn't exceed the viewport height */
-    overflow: hidden; /* Prevent scrolling, force content to fit */
+    overflow: auto; /* Allow scrolling within the dashboard */
     font-family: 'Arial', sans-serif; /* Font consistent with the theme */
+    flex-grow: 1; /* Allow the dashboard to grow */
 }
 
 /* Dashboard Sections */
@@ -413,10 +414,16 @@ input:focus {
     padding: 10px;
     border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-
+    margin-bottom: 5px; /* Reduce margin to ensure smaller spacing */
     flex-shrink: 1; /* Allow sections to shrink if necessary */
     overflow: hidden; /* Prevent overflowing content */
     text-overflow: ellipsis; /* Truncate long text with ellipsis if needed */
+}
+
+.dashboard > div:last-child {
+    flex-grow: 1; /* Make the last div take the remaining space */
+    display: flex;
+    flex-direction: column;
 }
 
 /* Section Titles */
@@ -428,7 +435,6 @@ input:focus {
 
     flex-shrink: 0; /* Prevent titles from shrinking */
 }
-
 
 /* Stats Section */
 .entry-stats p {
@@ -454,9 +460,35 @@ input:focus {
     color: #777;
     text-align: center;
     word-wrap: break-word; /* Ensure long words break to fit */
-    max-height: 150px; /* Limit height to prevent overflow */
-    overflow-y: hidden; /* Prevent vertical overflow */
-    overflow-x: hidden; /* Prevent horizontal overflow */
+    padding-bottom: 20px; /* Add padding to the bottom to ensure button visibility */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Align items to the start */
+    flex-grow: 1; /* Allow the section to grow and take remaining space */
+}
+
+.motivational-quotes p {
+    flex-grow: 1; /* Allow the quote text to grow */
+    overflow-y: auto; /* Allow vertical scrolling for the quote text */
+}
+
+.motivational-quotes button {
+    background: linear-gradient(135deg, #ffc021, #351fc4); /* Matching gradient */
+    color: #fff;
+    padding: 10px 20px; /* Adjust padding for better spacing */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Pacifico', cursive;
+    font-size: 14px;
+    margin-top: 10px; /* Add margin to the top */
+    align-self: center; /* Center the button horizontally */
+    flex-shrink: 0; /* Prevent the button from shrinking */
+}
+
+/* Hover effect for motivational quote button */
+.motivational-quotes button:hover {
+    background: linear-gradient(135deg, #351fc4, #ffc021); /* Reverse gradient on hover */
 }
 
 /* Dashboard Section Wrappers */
@@ -468,20 +500,13 @@ input:focus {
 }
 
 
-.motivational-quotes button {
-    background: linear-gradient(135deg, #ffc021, #351fc4); /* Matching gradient */
-    color: #fff;
-    padding: 3px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-family: 'Pacifico', cursive;
-    font-size: 14px;
-    position: fixed;
-}
 
-/* Hover effect for motivational quote button */
-.motivational-quotes button:hover {
-    background: linear-gradient(135deg, #351fc4, #ffc021); /* Reverse gradient on hover */
+@media (max-width: 768px) {
+    #dashboard {
+        position: absolute;
+        top: 100%;
+        width: 100%;
+        background-color: #f0f0f0;
+        /* Optional: Add background for better visibility */
+    }
 }
-

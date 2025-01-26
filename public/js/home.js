@@ -3,8 +3,12 @@ var modal = document.getElementById("edit-profile-modal");
 var firstName = document.getElementById("firstname");
 var lastName = document.getElementById("lastname");
 var email = document.getElementById("email");
-var password = document.getElementById("password");
 var username = document.getElementById("username");
+
+document.getElementById("oldfirstname").innerText += " "+user.firstname;
+    document.getElementById("oldlastname").innerText += " "+user.lastname;
+    document.getElementById("oldemail").innerText += " "+user.email;
+    document.getElementById("oldusername").innerText += " "+user.username;
 
 // Get the button that opens the modal
   var settingsBtn = document.getElementById("editprofile");
@@ -15,14 +19,26 @@ var username = document.getElementById("username");
   // When the user clicks the button, open the modal
   settingsBtn.onclick = function() {
     modal.style.display = "flex";
-    document.getElementById("oldfirstname").innerText += " "+user.firstname;
-    document.getElementById("oldlastname").innerText += " "+user.lastname;
-    document.getElementById("oldemail").innerText += " "+user.email;
-    document.getElementById("oldusername").innerText += " "+user.username;
-
-
 
   }
+
+  const password = document.getElementById('password');
+  const confirmPassword = document.getElementById('confirm-password');
+  const submitBtn = document.getElementById('submitBtn');
+  const errorMessage = document.getElementById('errorMessage');
+
+  function validatePasswords() {
+    if (password.value === confirmPassword.value && password.value.trim() !== '') {
+      submitBtn.disabled = false;
+      errorMessage.style.display = 'none';
+    } else {
+      submitBtn.disabled = true;
+      errorMessage.style.display = 'block';
+    }
+  }
+
+  password.addEventListener('input', validatePasswords);
+  confirmPassword.addEventListener('input', validatePasswords);
 
   // When the user clicks on <span> (x), close the modal
   closeModalBtn.onclick = function() {
@@ -67,7 +83,7 @@ const displayDate = document.getElementById("display-date");
 
   // Get today's date
   const today = new Date();
-  const selectedDate=today;
+  var selectedDate=today;
 
   // Format today's date for display in a human-readable format
   const options = { weekday: "short", year: "numeric", month: "numeric", day: "numeric" };
@@ -94,6 +110,7 @@ const displayDate = document.getElementById("display-date");
     const options = { weekday: "short", year: "numeric", month: "numeric", day: "numeric" };
     displayDate.textContent = `📅 ${chosenDate.toLocaleDateString(undefined, options)}`;
     console.log(chosenDate);
+    selectedDate=chosenDate;
     datePicker.classList.add("hidden");
   });
 
@@ -101,8 +118,8 @@ const displayDate = document.getElementById("display-date");
     datePicker.classList.add("hidden");
   });
 
-  const saveButton = document.querySelector(".save-now");
-saveButton.addEventListener("click", () => {
+    const saveButton = document.querySelector(".save-now");
+    saveButton.addEventListener("click", () => {
     const title = document.querySelector(".entry-title").textContent.trim();
     const body = document.querySelector(".entry-body").value.trim();
     const category = document.getElementById("category-select").value;

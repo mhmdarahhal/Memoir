@@ -107,6 +107,11 @@
         </main>
     </div>
 
+    @if ($errors->has('password'))
+        <script>
+            alert("{{ $errors->first('password') }}");
+        </script>
+    @endif
     <!-- Modal Structure -->
     <div id="edit-profile-modal" class="modal">
         <div class="modal-content">
@@ -144,12 +149,19 @@
                     <label for="confirm-password">Confirm New Password</label>
                     <input type="password" id="confirm-password" name="confirm-password"
                         placeholder="Confirm the new password">
+                    <br>
+                    <p id="errorMessage" class="error" style="display: none;color:red">Passwords do not match!</p>
                 </div>
 
-                <button type="submit" class="save-profile-btn">Save Changes</button>
+                <button type="submit" class="save-profile-btn" id="submitBtn">Save Changes</button>
             </form>
         </div>
     </div>
+    @if (isset($alertMessage))
+        <script>
+            alert('{{ $alertMessage }}');
+        </script>
+    @endif
 
 
     <script>

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Rules\Password;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Log;
 
 
 class registerController extends Controller
@@ -47,12 +48,53 @@ class registerController extends Controller
             Auth::user()->update(['firstname' => $request->get('firstname')]);
             session()->put('firstname', Auth::user()->firstname);
             session()->put('user', Auth::user());
+        }
+        if ($request->get('lastname') != '') {
+            $editprofileform = $request->validate([
+                'lastname' => ['required', 'max:25'],
+            ]);
+            Auth::user()->update(['lastname' => $request->get('lastname')]);
+            session()->put('lastname', Auth::user()->lastname);
+            session()->put('user', Auth::user());
+        }
+        if ($request->get('email') != '') {
+            $editprofileform = $request->validate([
+                'email' => ['required', 'max:25'],
+            ]);
+            Auth::user()->update(['email' => $request->get('email')]);
+            session()->put('lastname', Auth::user()->email);
+            session()->put('user', Auth::user());
+        }
+        if ($request->get('password') != '') {
+            $editprofileform = $request->validate([
+                'password' => ['required', new Password]
+            ]);
+            Auth::user()->update([
+                'password' => Hash::make($request->input('password')),
+            ]);
+            session()->put('password', Auth::user()->password);
+            session()->put('user', Auth::user());
+        }
+        if ($request->get('username') != '') {
+            $username = $request->get('username');
+            $exists = User::where('username', $username)->exists();
+            if (!$exists) {
+                $editprofileform = $request->validate([
+                    'username' => ['required', 'max:25'],
+                ]);
+                Auth::user()->update(['username' => $request->get('username')]);
+                session()->put('username', Auth::user()->username);
+                session()->put('user', Auth::user());
+            } else {
+                return view('home')->with('alertMessage', 'username not available');
+
+            }
 
         }
 
 
 
-        return redirect()->route('home');
+        return redirect()->back();
     }
 
 
