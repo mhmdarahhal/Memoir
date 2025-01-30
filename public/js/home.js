@@ -145,23 +145,27 @@ const displayDate = document.getElementById("display-date");
 
 
 
-const totalEntries = 50;
-    const weeklyEntries = 4;
-    const monthlyEntries = 15;
-    document.getElementById('totalEntries').textContent = totalEntries;
-    document.getElementById('weeklyEntries').textContent = weeklyEntries;
-    document.getElementById('monthlyEntries').textContent = monthlyEntries;
-
-
-
     // Motivational Quote
     const quotes = [
         '"The best way to predict the future is to create it."',
         '"Success is not the key to happiness. Happiness is the key to success."',
         '"Believe in yourself and all that you are. Know that there is something inside you that is greater than any obstacle."',
         '"Don’t watch the clock; do what it does. Keep going."',
-        '"Your time is limited, so don’t waste it living someone else’s life."'
+        '"Your time is limited, so don’t waste it living someone else’s life."',
+        '"The only limit to our realization of tomorrow will be our doubts of today."',
+        '"It always seems impossible until it’s done."',
+        '"What lies behind us and what lies before us are tiny matters compared to what lies within us."',
+        '"Success usually comes to those who are too busy to be looking for it."',
+        '"Start where you are. Use what you have. Do what you can."',
+        '"Dream big and dare to fail."',
+        '"Act as if what you do makes a difference. It does."',
+        '"Hardships often prepare ordinary people for an extraordinary destiny."',
+        '"Success is not final, failure is not fatal: It is the courage to continue that counts."',
+        '"Opportunities don’t happen. You create them."',
+        '"Do what you can with all you have, wherever you are."',
+        '"Great things never come from comfort zones."'
     ];
+
 
     function getRandomQuote() {
         const randomIndex = Math.floor(Math.random() * quotes.length);
