@@ -87,9 +87,10 @@ function displayMemoirs(memoirs) {
         <p class="memoir-category">Category: ${memoir.category}</p>
         <p class="memoir-mood">Mood: ${memoir.mood}</p>
         <p class="memoir-body-hidden">${memoir.body}</p>
+        <p class="memoirid" style="display: none;>${memoir.memoirid}</p>
         `;
+
         card.addEventListener('click', () => openMemoirModal(memoir));
-        document.querySelector("#memoirid").value = memoir.memoirid;
 
         memoirsGrid.appendChild(card);
     });
@@ -104,6 +105,14 @@ function openMemoirModal(memoir) {
     document.getElementById('category-select').value = memoir.category;
     document.getElementById('mood-select').value = memoir.mood;
     document.getElementById('memoir-body').innerText = memoir.body;
+    document.getElementById('memoirid').value = memoir.memoirid;
+
+    // Set the default value of the date picker to the memoir date
+    const datePicker = document.getElementById("date-picker");
+        const memoirDate = new Date(memoir.date);
+        const isoMemoirDate = memoirDate.toISOString().split("T")[0];
+        datePicker.value = isoMemoirDate;
+        console.log(isoMemoirDate);
 
     modal.style.display = 'block'; // Show the modal
 }
@@ -224,68 +233,65 @@ function moveDashboard() {
 }
 
 const displayDate = document.getElementById("display-date");
-  const datePicker = document.getElementById("date-picker");
+const datePicker = document.getElementById("date-picker");
 
-  // Get today's date
-  const today = new Date();
-  var selectedDate=today;
+// Get today's date
+const today = new Date();
+var selectedDate = today; // Ensure selectedDate is initialized
 
-  // Format today's date for display in a human-readable format
+// Format today's date for display in a human-readable format
+const options = { weekday: "short", year: "numeric", month: "numeric", day: "numeric" };
+const formattedDate = today.toLocaleDateString(undefined, options);
+
+// Set the `displayDate` to today's date
+displayDate.textContent = `📅 ${formattedDate}`;
+
+
+
+displayDate.addEventListener("click", () => {
+  datePicker.classList.remove("hidden");
+  datePicker.focus();
+});
+
+datePicker.addEventListener("change", () => {
+  const chosenDate = new Date(datePicker.value);
   const options = { weekday: "short", year: "numeric", month: "numeric", day: "numeric" };
-  const formattedDate = today.toLocaleDateString(undefined, options);
+  displayDate.textContent = `${chosenDate.toDateString(undefined, options)}`;
+  console.log(chosenDate);
+  selectedDate = chosenDate; // Update selectedDate
+  datePicker.classList.add("hidden");
+});
 
-  // Set the `displayDate` to today's date
-  displayDate.textContent = `📅 ${formattedDate}`;
+datePicker.addEventListener("blur", () => {
+  datePicker.classList.add("hidden");
+});
 
-  // Format today's date for the date input (yyyy-mm-dd format)
-  const isoDate = today.toISOString().split("T")[0]; // Extract yyyy-mm-dd format
+const saveButton = document.querySelector(".save-memoir-btn");
+saveButton.addEventListener("click", () => {
+  const title = document.querySelector(".entry-title").textContent.trim();
+  const body = document.querySelector(".entry-body").value.trim();
+  const category = document.getElementById("category-select").value;
+  const mood = document.getElementById("mood-select").value;
+  selectedDate= new Date(datePicker.value);
+  // Use the date displayed in displayDate if the user doesn't interact with the date picker
+  const date = selectedDate ? selectedDate.toISOString().split('T')[0] : null;
 
-  // Set the default value of the date picker to today's date
-  datePicker.value = isoDate;
+  if (title && body) {
+    console.log("Saving Memoir Entry...");
+    console.log("Title:", typeof title, title);
+    console.log("Body:", typeof body, body);
+    console.log("Category:", typeof category, category);
+    console.log("Mood:", typeof mood, mood);
+    console.log("Date:", typeof date, date); // Log the date as a Date object
 
+    document.querySelector("#title").value = title;
+    document.querySelector("#date").value = date;
+    console.log(document.querySelector("#date").value);
 
-
-  displayDate.addEventListener("click", () => {
-    datePicker.classList.remove("hidden");
-    datePicker.focus();
-  });
-
-  datePicker.addEventListener("change", () => {
-    const chosenDate = new Date(datePicker.value);
-    const options = { weekday: "short", year: "numeric", month: "numeric", day: "numeric" };
-    displayDate.textContent = `${chosenDate.toDateString(undefined, options)}`;
-    console.log(chosenDate);
-    selectedDate=chosenDate;
-    datePicker.classList.add("hidden");
-  });
-
-  datePicker.addEventListener("blur", () => {
-    datePicker.classList.add("hidden");
-  });
-
-    const saveButton = document.querySelector(".save-memoir-btn");
-    saveButton.addEventListener("click", () => {
-    const title = document.querySelector(".entry-title").textContent.trim();
-    const body = document.querySelector(".entry-body").value.trim();
-    const category = document.getElementById("category-select").value;
-    const mood = document.getElementById("mood-select").value;
-    const date = selectedDate ? selectedDate.toISOString().split('T')[0] : null; // Format the date as YYYY-MM-DD
-    if (title && body) {
-        console.log("Saving Memoir Entry...");
-        console.log("Title:",typeof title, title);
-        console.log("Body:",typeof body, body);
-        console.log("Category:",typeof category, category);
-        console.log("Mood:",typeof mood, mood);
-        console.log("Date:",typeof date, date); // Log the date as a Date object
-
-        document.querySelector("#title").value = title;
-        document.querySelector("#date").value = date;
-
-
-        alert("Your memoir has been saved!");
-    } else {
-        alert("Please fill in the title and entry text.");
-    }
+    alert("Your memoir has been saved!");
+  } else {
+    alert("Please fill in the title and entry text.");
+  }
 });
 
 
